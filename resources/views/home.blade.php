@@ -16,7 +16,7 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
-            <h1>Welcome to CareWare</h1>
+            <h1>Welcome to CareWear</h1>
             <p class="fs-5 col-md-8">Consequat quis ad sint mollit non nulla nulla commodo 
                 cillum id magna. Tempor esse non reprehenderit officia in exercitation labore 
                 dolore mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
@@ -54,7 +54,7 @@
             </div>
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
-            Created by the CareWare team &middot; &copy; 2021
+            Created by the CareWear team &middot; &copy; 2021
         </footer>
     </div>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
