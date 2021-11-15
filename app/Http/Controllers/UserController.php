@@ -29,6 +29,18 @@ class UserController extends Controller
     public function profile(){
         return view('profile');
     }
+
+    public function evaluate(){
+        return view('evaluate');
+    }
+
+    public function record(){
+        return view('record');
+    }
+
+    public function abnormal(){
+        return view('abnormal');
+    }
 }
 
 ?>
