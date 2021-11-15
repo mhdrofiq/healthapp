@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/profile', [UserController::class, 'profile']);
+Route::get('/record', [UserController::class, 'record']);
+Route::get('/evaluate', [UserController::class, 'evaluate']);
+Route::get('/abnormal', [UserController::class, 'abnormal']);
 
 Route::get('/home', [UserController::class, 'home']);
 
