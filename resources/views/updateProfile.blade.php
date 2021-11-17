@@ -17,11 +17,11 @@
         <div class="col-lg-8 mx-auto p-3 py-md-5">
 
             <div class="container emp-profile">
-                <h1>Edit Profile</h1>
-                <hr>
+
                 <div class="row">
                     <!-- left column -->
                     <div class="col-md-4">
+                        <h2>Edit Profile</h2>
                         <div class="text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar img-circle img-thumbnail" alt="avatar" style="border-radius: 50%;"> </br> </br>
                             <h5>Senior Citizen</h5>
@@ -84,12 +84,6 @@
                     </div>
                 </div>
             </div>
-            <hr>
-
-
-            <footer class="pt-5 my-5 text-muted border-top">
-                Created by the CareWare team &middot; &copy; 2021
-            </footer>
         </div>
     </section>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
