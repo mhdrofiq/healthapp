@@ -13,57 +13,73 @@
     <header class="row">
         @include('includes.header')
     </header>
-
+    <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <div class="container emp-profile">
+        
         <form method="post">
+       
             <div class="row">
+           
                 <div class="col-md-4">
+                    
                     <div class="profile-img">
-                        <img style="border-radius: 50%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                        <br><br><br>
+                    <h2>My Profile</h2>
+                    <br>
+                        <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
+                        <br><br><br><br>
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
                         </div>
+                        
                     </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="profile-head">
+                        <h4>
+                        Danita Chalondra Grizelle
+                        </h4>
                         <h5>
-                            Kshiti Ghelani
+                            Senior Citizen
                         </h5>
-                        <h6>
-                            Web Developer and Designer
-                        </h6>
+                        <br>
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User Id</label>
+                                <label><b>Name  :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Kshiti123</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Kshiti Ghelani</p>
+                                <p>Danita Chalondra Grizell</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Email</label>
+                                <label><b>Email  :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>kshitighelani@gmail.com</p>
+                                <p>danitagrizelle19@gmail.com</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Phone</label>
+                                <label><b>Birthday :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>19/11/2001</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Age   :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>20</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Phone  :</b></label>
                             </div>
                             <div class="col-md-6">
                                 <p>123 456 7890</p>
@@ -71,20 +87,20 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Profession</label>
+                                <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
+                                <p>Los Angeles</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                   <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a>
                 </div>
             </div>
-
+            
         </form>
     </div>
 
