@@ -13,60 +13,108 @@
     <header class="row">
         @include('includes.header')
     </header>
-    <section class="section about-section gray-bg" id="about">
-        <div class="col-lg-8 mx-auto p-3 py-md-5">
+    <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
+    <div class="container emp-profile">
 
-            <div class="container">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-6">
-                        <div class="about-text go-to">
-                            <h3 class="dark-color">Name</h3>
-                            <h6 class="theme-color lead"><b>Senior Citizen/CareTaker</b></h6>
-                            <p>A bit description of the user that has been inputted.</p>
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Birthday</label>
-                                        <p>4th april 1998</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Age</label>
-                                        <p>22 Yr</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Address</label>
-                                        <p>California, USA</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>E-mail</label>
-                                        <p>info@domain.com</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Phone</label>
-                                        <p>820-885-3321</p>
-                                    </div>
-                                </div>
+        <form method="post">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="profile-img">
+                        <h2>My Profile</h2>
+                        <br>
+                        <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
+                        <br><br><br><br>
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                            <input type="file" name="file" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h4>
+                            Danita Chalondra Grizelle
+                        </h4>
+                        <h5>
+                            Senior Citizen
+                        </h5>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Name :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Danita Chalondra Grizell</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-avatar">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""> <br> <br>
-                            <p><a href="" class="change">Change Picture</a></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Email :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>danitagrizelle19@gmail.com</p>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Gender :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Female</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Birthday :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>19/11/2001</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Age :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>20</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Phone :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Address :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Los Angeles</p>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+                <div class="col-md-2">
+                    <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a>
                 </div>
             </div>
 
+        </form>
+    </div>
 
-            <footer class="pt-5 my-5 text-muted border-top">
-                Created by the CareWare team &middot; &copy; 2021
-            </footer>
-        </div>
-    </section>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js">
+    </script>
 </body>
 
 </html>
