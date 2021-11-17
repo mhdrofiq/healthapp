@@ -2,9 +2,7 @@
 
 This Repository is dedicated to our project in Application Development subject
 
-<<<<<<< HEAD
 ## Installation
-=======
 
 Before you clone the repo, please make sure you have installed Git, Composer, Laravel, MySQL, and the editor of your choice to work on this project.
 
