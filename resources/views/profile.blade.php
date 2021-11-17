@@ -44,7 +44,7 @@
                             Senior Citizen
                         </h5>
                         <br>
-                        <br>
+                        
                         <div class="row">
                             <div class="col-md-6">
                                 <label><b>Name  :</b></label>
@@ -59,6 +59,14 @@
                             </div>
                             <div class="col-md-6">
                                 <p>danitagrizelle19@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Gender :</b></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Female</p>
                             </div>
                         </div>
                         <div class="row">
