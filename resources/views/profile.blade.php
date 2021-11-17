@@ -28,6 +28,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
@@ -36,6 +37,7 @@
                         <h6>
                             Web Developer and Designer
                         </h6>
+                        <br>
                         <div class="row">
                             <div class="col-md-6">
                                 <label>User Id</label>
