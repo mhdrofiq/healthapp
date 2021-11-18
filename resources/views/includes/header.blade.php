@@ -27,7 +27,7 @@
           <a class="nav-link" href="{{url('record')}}">Data Record</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('login')}}">Logout</a>
+          <a class="nav-link" href="\">Logout</a>
         </li>
         <!--<li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
