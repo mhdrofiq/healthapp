@@ -16,11 +16,13 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/profile', [UserController::class, 'profile']);
 Route::get('/record', [UserController::class, 'record']);

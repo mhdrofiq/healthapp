@@ -15,7 +15,6 @@
     </header>
     <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <div class="container emp-profile">
-
         <form method="post">
 
             <div class="row">
@@ -25,6 +24,7 @@
                     <div class="profile-img">
                         <h2>My Profile</h2>
                         <br>
+
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
                         <br><br><br><br>
                         <div class="file btn btn-lg btn-primary">
@@ -39,6 +39,7 @@
                     <div class="profile-head">
                         <h4>
                             Danita Chalondra Grizelle
+
                         </h4>
                         <h5>
                             Senior Citizen
@@ -111,7 +112,6 @@
 
         </form>
     </div>
-
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js">
     </script>
