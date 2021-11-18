@@ -41,6 +41,10 @@ class UserController extends Controller
     public function abnormal(){
         return view('abnormal');
     }
+
+    public function updateProfile(){
+        return view('updateProfile');
+    }
 }
 
 ?>

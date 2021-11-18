@@ -15,39 +15,40 @@
     </header>
     <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <div class="container emp-profile">
-        
         <form method="post">
-       
+
             <div class="row">
-           
+
                 <div class="col-md-4">
-                    
+
                     <div class="profile-img">
-                    <h2>My Profile</h2>
-                    <br>
+                        <h2>My Profile</h2>
+                        <br>
+
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
                         <br><br><br><br>
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
                         </div>
-                        
+
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h4>
-                        Danita Chalondra Grizelle
+                            Danita Chalondra Grizelle
+
                         </h4>
                         <h5>
                             Senior Citizen
                         </h5>
                         <br>
-                        
+
                         <div class="row">
                             <div class="col-md-6">
-                                <label><b>Name  :</b></label>
+                                <label><b>Name :</b></label>
                             </div>
                             <div class="col-md-6">
                                 <p>Danita Chalondra Grizell</p>
@@ -55,7 +56,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label><b>Email  :</b></label>
+                                <label><b>Email :</b></label>
                             </div>
                             <div class="col-md-6">
                                 <p>danitagrizelle19@gmail.com</p>
@@ -79,7 +80,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label><b>Age   :</b></label>
+                                <label><b>Age :</b></label>
                             </div>
                             <div class="col-md-6">
                                 <p>20</p>
@@ -87,7 +88,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label><b>Phone  :</b></label>
+                                <label><b>Phone :</b></label>
                             </div>
                             <div class="col-md-6">
                                 <p>123 456 7890</p>
@@ -105,14 +106,13 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                   <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a>
+                    <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a>
                 </div>
             </div>
-            
+
         </form>
     </div>
 
-    
     <script src="../assets/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>
