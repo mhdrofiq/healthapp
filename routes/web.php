@@ -16,19 +16,35 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-/*
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
-*/
 
-Route::get('/', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'register']);
-Route::get('/profile', [UserController::class, 'profile']);
-Route::get('/record', [UserController::class, 'record']);
-Route::get('/evaluate', [UserController::class, 'evaluate']);
-Route::get('/abnormal', [UserController::class, 'abnormal']);
-Route::get('/updateProfile', [UserController::class, 'updateProfile']);
+Route::get('/register', function () {
+    return view('register');
+});
 
-Route::get('/home', [UserController::class, 'home']);
+Route::get('/profile', function () {
+    return view('profile');
+});
 
+Route::get('/record', function () {
+    return view('record');
+});
+
+Route::get('/evaluate', function () {
+    return view('evaluate');
+});
+
+Route::get('/abnormal', function () {
+    return view('abnormal');
+});
+
+Route::get('/updateProfile', function () {
+    return view('updateProfile');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
