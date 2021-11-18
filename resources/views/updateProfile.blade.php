@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Address:</label>
+                                <label class="col-lg-3 control-label">Address: </label>
                                 <div class="col-lg-8">
                                     <input class="form-control" type="text" value="Los Angeles">
                                 </div> </br>
