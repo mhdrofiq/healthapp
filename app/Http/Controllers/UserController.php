@@ -22,29 +22,6 @@ class UserController extends Controller
         ]);
     }
     */
-    public function home(){
-        return view('home');
-    }
-
-    public function profile(){
-        return view('profile');
-    }
-
-    public function evaluate(){
-        return view('evaluate');
-    }
-
-    public function record(){
-        return view('record');
-    }
-
-    public function abnormal(){
-        return view('abnormal');
-    }
-
-    public function updateProfile(){
-        return view('updateProfile');
-    }
 }
 
 ?>

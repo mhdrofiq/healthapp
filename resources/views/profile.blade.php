@@ -39,7 +39,6 @@
                     <div class="profile-head">
                         <h4>
                             Danita Chalondra Grizelle
-
                         </h4>
                         <h5>
                             Senior Citizen
