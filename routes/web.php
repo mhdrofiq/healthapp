@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,10 @@ Route::get('/updateProfile', function () {
 
 Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/template', function (User $user) {
+    return view('template', [
+        'users' => $user
+    ]);
 });
