@@ -9,8 +9,8 @@ class Heartrate extends Model
 {
     use HasFactory;
 
-    public function senior()
+    public function user()
     {
-        return $this->belongsTo(Senior::class);
+        return $this->belongsTo(User::class);
     }
 }
