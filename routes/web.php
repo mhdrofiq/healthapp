@@ -22,9 +22,9 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
-*/
 
-<<<<<<< HEAD
+
+
 Route::get('/', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/profile', [UserController::class, 'profile']);
