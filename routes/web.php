@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Temperature;
 use App\Models\User;
 
 /*
@@ -50,8 +48,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/template', function (User $user) {
+Route::get('/template', function () {
     return view('template', [
-        'users' => $user
+        'temps' => Temperature::with('user')->get()
     ]);
 });

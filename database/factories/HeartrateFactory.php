@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Temperature;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TemperatureFactory extends Factory
+class HeartrateFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,8 +17,8 @@ class TemperatureFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'temperature' => $this->faker->numberBetween(30, 40),
-            'recordtime_tm' => $this->faker->dateTimeBetween('2021-10-10', '2021-10-20')
+            'bpm' => $this->faker->numberBetween(60, 100),
+            'recordtime_hr' => $this->faker->dateTimeBetween('2021-10-10', '2021-10-20')
         ];
     }
 }
