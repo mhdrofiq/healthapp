@@ -18,7 +18,7 @@
           <img class="mb-4" src="/img/logo.png" alt="" width="300px">
              
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form </h3> </center>
-            <form>
+            <form action="\">
 
               <div class="row">
                 <div class="col-md-6 mb-4">
@@ -118,8 +118,13 @@
             <center>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+<<<<<<< HEAD
               <input style="background-color:grey" class="btn btn-primary btn-lg" type="button" name="cancel" value="cancel"  />       
             </div>
+=======
+                <a href="\" class="btn btn-primary btn-lg" name="cancel">Cancel</a>       
+              </div>
+>>>>>>> main
             </form>
           </div>
         </div>
