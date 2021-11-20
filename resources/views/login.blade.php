@@ -23,8 +23,8 @@
     <main class="form-signin">
         <!--dont forget to add method and action to form tag-->
         <form action="home">
-            <img class="mb-4" src="/img/placeholder.jpg" alt="" width="72" height="57">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <img class="mb-4" src="/img/logo.png" alt="" width="400px">
+            <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
 
             <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -40,7 +40,17 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <a href="{{url('home')}}"><button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button></a>
+            <div>
+            <br>
+            <label>
+                Don't have account? 
+                <a href="register">Register</a>.
+            </label><br>
+            <label>
+                <a href="">Forgot Password?</a>
+            </label>
+            </div>
             <p class="mt-5 mb-3 text-muted">&copy; CareWear 2021</p>
         </form>
     </main>

@@ -118,17 +118,7 @@
             <center>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-<<<<<<< HEAD
-              <input style="background-color:grey" class="btn btn-primary btn-lg" type="button" name="cancel" value="cancel"  />       
-            </div>
-=======
-                <a href="\" class="btn btn-primary btn-lg" name="cancel">Cancel</a>       
-              </div>
->>>>>>> main
-            </form>
-          </div>
         </div>
       </div>
-    </div>
   </div>
 </section> 

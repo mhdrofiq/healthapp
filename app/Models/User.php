@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'gender',
+        'address',
+        'birthdate',
     ];
 
     /**
@@ -41,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function temperature()
+    {
+        return $this->hasMany(Temperature::class);
+    }
+
+    public function heartrate()
+    {
+        return $this->hasMany(Heartrate::class);
+    }
 }

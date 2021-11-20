@@ -16,7 +16,8 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
-            <h1>Welcome to CareWear</h1>
+            <img class="mb-4" src="/img/logo.png" alt="" width="400px">
+            <br><br><h1>Welcome to CareWear</h1>
             <p class="fs-5 col-md-8">Consequat quis ad sint mollit non nulla nulla commodo 
                 cillum id magna. Tempor esse non reprehenderit officia in exercitation labore 
                 dolore mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
@@ -29,7 +30,7 @@
 
             <div class="row g-5">
                 <div class="col-md-6">
-                    <h2>Section Title</h2>
+                    <h2>About CareWear</h2>
                     <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
                         Tempor esse non reprehenderit officia in exercitation labore dolore 
                         mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
@@ -40,7 +41,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h2>Section Title</h2>
+                    <h2>About Our Product</h2>
                     <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
                         Tempor esse non reprehenderit officia in exercitation labore dolore 
                         mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
@@ -53,6 +54,9 @@
                 </div>
             </div>
         </main>
+
+        
+
         <footer class="pt-5 my-5 text-muted border-top">
             Created by the CareWear team &middot; &copy; 2021
         </footer>
