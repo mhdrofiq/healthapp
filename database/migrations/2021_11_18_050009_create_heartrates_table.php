@@ -17,6 +17,7 @@ class CreateHeartratesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('bpm');
+            $table->timestamp('recordtime_hr');
             $table->timestamps();
         });
     }

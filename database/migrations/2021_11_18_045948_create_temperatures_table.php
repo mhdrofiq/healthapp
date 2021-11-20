@@ -17,7 +17,7 @@ class CreateTemperaturesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('temperature');
-            $table->timestamp('recordtime');
+            $table->timestamp('recordtime_tm');
             $table->timestamps();
         });
     }
