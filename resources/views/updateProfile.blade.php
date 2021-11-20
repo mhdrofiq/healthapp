@@ -13,6 +13,7 @@
     <header class="row">
         @include('includes.header')
     </header>
+    <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <section class="section about-section gray-bg" id="about">
         <div class="col-lg-8 mx-auto p-3 py-md-5">
             <div class="container emp-profile">
