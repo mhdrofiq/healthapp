@@ -15,6 +15,7 @@ use App\Models\User;
 |
 */
 
+
 Route::get('/', function () {
     return view('login');
 });
@@ -23,15 +24,14 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
 
-
-Route::get('/', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'register']);
-Route::get('/profile', [UserController::class, 'profile']);
-Route::get('/record', [UserController::class, 'record']);
 Route::get('/record', function () {
     return view('record');
 });
+
 Route::get('/evaluate', function () {
     return view('evaluate');
 });
