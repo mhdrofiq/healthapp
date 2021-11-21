@@ -53,3 +53,5 @@ Route::get('/template', function () {
         'temps' => Temperature::with('user')->get()
     ]);
 });
+
+Route::post('register', [AuthController::class, 'register'])->name('register');
