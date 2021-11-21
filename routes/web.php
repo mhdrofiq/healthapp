@@ -54,4 +54,4 @@ Route::get('/template', function () {
     ]);
 });
 
-Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'register'])->name('register-user');
