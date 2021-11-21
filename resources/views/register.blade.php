@@ -24,10 +24,8 @@
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                  <input type="name" class="form-control form-control-lg" placeholder="Name" />
-                    
+                  <input type="name" class="form-control form-control-lg" placeholder="Name" />  
                   </div>
-
                 </div>
                 <div class="col-md-6 mb-4">
 
@@ -40,20 +38,39 @@
               </div>
 
               <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
+              <div class="col-md-6 mb-4">
 
-                  <div class="form-outline w-100">
-                    <input
-                      type="text"
-                      class="form-control form-control-lg"
-                      id="birthdayDate"
-                      placeholder="Birthday Date"
-                      onfocus="(this.type='date')"
-                    />
+            <div class="form-outline">
+            <input type="password" id="pwd" class="form-control form-control-lg" placeholder="Password" />
+</div>
+</div>
+              <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" class="form-control form-control-lg" id="birthdayDate" placeholder="Birthday Date" onfocus="(this.type='date')"/>
+
+                    
+                  </div>
+  
+          </div>
+  </div>
+  <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                  <input type="text" id="Address" class="form-control form-control-lg" placeholder="Address" />  
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="PhoneNum" class="form-control form-control-lg" placeholder="Phone Number" />
                     
                   </div>
 
                 </div>
+              
+                </div>
+                <div class ="row">
                 <div class="col-md-6 mb-4">
 
                   <h6 class="mb-2 pb-1">Gender: </h6>
@@ -83,28 +100,14 @@
 
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                  <div class="form-outline w-100 ">
-                     <input type="text" id="Address" class="form-control form-control-lg" placeholder="Address" />
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                     <input type="text" id="PhoneNum" class="form-control form-control-lg" placeholder="Phone Number" />
-                   
-                  </div>
+</div>
 
                 </div>
               </div>
 
-              <div class="row">
+              
                 <div class="col-12">
-
+<center>
                   <select class="select form-control-lg">
                     
                     <option value="2">Senior Citizen</option>
@@ -115,15 +118,13 @@
 
                 </div>
               </div>
+
             <center>
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-                <a href="\" class="btn btn-primary btn-lg" name="cancel">Cancel</a>       
-              </div>
-            </form>
-          </div>
+                <input class="btn btn-primary btn-lg" type="reset" value="Cancel">
+
         </div>
       </div>
-    </div>
   </div>
-</section> 
+</section>
