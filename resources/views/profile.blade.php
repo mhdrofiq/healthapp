@@ -1,3 +1,15 @@
+<?
+    $hostname = "localhost";
+    $username = "root";
+    $email = "";
+    $database = "healthapp";
+
+    $conn = mysqli_connect($hostname, $username, $email, $database);
+    if(!$conn)
+	    echo('Error: ' . mysqli_connect_error($conn));
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -15,7 +27,13 @@
     </header>
     <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <div class="container emp-profile">
-        
+    <?php
+$sql="SELECT * FROM users where id=$register_id";
+$result=mysqli_query($con,$sql);
+?>
+<?php
+while($rows=mysqli_fetch_array($result)){
+    ?>
         <form method="post">
        
             <div class="row">
@@ -38,7 +56,7 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h4>
-                        Danita Chalondra Grizelle
+                        <?php echo $rows['name']; ?>
                         </h4>
                         <h5>
                             Senior Citizen
@@ -50,7 +68,7 @@
                                 <label><b>Name  :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Danita Chalondra Grizell</p>
+                                <p><?php echo $rows['name']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -58,7 +76,7 @@
                                 <label><b>Email  :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>danitagrizelle19@gmail.com</p>
+                                <p><?php echo $rows['email']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -66,7 +84,7 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Female</p>
+                                <p><?php echo $rows['gender']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -74,7 +92,7 @@
                                 <label><b>Birthday :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>19/11/2001</p>
+                                <p><?php echo $rows['birthdate']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -90,7 +108,7 @@
                                 <label><b>Phone  :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>123 456 7890</p>
+                                <p><?php echo $rows['phone']; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -98,7 +116,7 @@
                                 <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Los Angeles</p>
+                                <p><?php echo $rows['address']; ?></p>
                             </div>
                         </div>
 
@@ -112,7 +130,10 @@
         </form>
     </div>
 
-    
+    <?php 
+// close while loop 
+}
+?>
     <script src="../assets/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>
