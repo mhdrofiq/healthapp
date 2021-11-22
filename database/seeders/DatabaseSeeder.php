@@ -6,6 +6,7 @@ use App\Models\Heartrate;
 use App\Models\Temperature;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,11 +23,20 @@ class DatabaseSeeder extends Seeder
 
         $user1 = User::factory()->create([
             'email' => 'test@example.com',
-            'password' => bcrypt('testpass')
+            'password' => bcrypt('testpass'),
+            'gender' => 'm',
+            'usertype' => 's'
         ]);
 
-        $user2 = User::factory()->create();
-        $user3 = User::factory()->create();
+        $user2 = User::factory()->create([
+            'gender' => 'm',
+            'usertype' => 'c'
+        ]);
+
+        $user3 = User::factory()->create([
+            'gender' => 'f',
+            'usertype' => 's'
+        ]);
 
         Temperature::factory(5)->create([
             'user_id' => $user1->id
