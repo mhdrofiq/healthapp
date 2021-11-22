@@ -86,7 +86,7 @@
                   </select>
 
                 </div>
-                <button type="Cancel" class="btn btn-primary btn-block" style=background-color:grey;>Cancel</button>
+                <a href="/" class="btn btn-primary btn-block" style=background-color:grey;>Cancel</a>
                 <button type="submit" class="btn btn-primary btn-block">Register</button> </center>
             </form> <!-- /form -->
         </div> <!-- ./container -->
