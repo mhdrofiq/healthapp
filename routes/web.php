@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Temperature;
 use App\Models\User;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +49,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/template', function () {
-    return view('template', [
-        'temps' => Temperature::with('user')->get()
-    ]);
-});
+// Route::get('/template', function () {
+//     return view('template');
+// });
 
-Route::post('register', [AuthController::class, 'register'])->name('register-user');
+//dont forget to change template to register
+Route::get('template', [RegisterController::class, 'create']);
+Route::post('register', [RegisterController::class, 'store']);

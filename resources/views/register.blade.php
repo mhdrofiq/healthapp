@@ -4,32 +4,16 @@
     @include('includes.head')
     <title>Register</title>
     <link rel="stylesheet" href="css/register.css"/>
-    <!-- Custom styles for this template -->
-    <center><img class="mb-4" src="/img/logo.png" alt="" width="300px"></center>
     
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+    <center><img class="mb-4" src="/img/logo.png" alt="" width="300px"></center>
 
 <div class="container">
             <form class="form-horizontal" role="form">
                 <h2 style="font: size 5px;"> Registration Form</h2>
                 <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <label for="fullName" class="col-sm-3 control-label">Full Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="lastName" placeholder="Last Name" class="form-control" autofocus>
+                        <input type="text" id="fullName" placeholder="Full Name" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -102,7 +86,7 @@
                   </select>
 
                 </div>
-                <button type="reset" class="btn btn-primary btn-block" style=background-color:grey;>Reset</button>
+                <a href="/" class="btn btn-primary btn-block" style=background-color:grey;>Cancel</a>
                 <button type="submit" class="btn btn-primary btn-block">Register</button> </center>
             </form> <!-- /form -->
         </div> <!-- ./container -->
