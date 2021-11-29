@@ -26,22 +26,32 @@
                         <br>
 
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
+                        @if ($message = Session::get('success'))
+                        <img src="images/{{ Session::get('image') }}">
+                        @endif
                         <br><br><br><br>
+
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
+                            
                         </div>
 
                     </div>
                 </div>
 
+
+
+
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <h4>
-                            Danita Chalondra Grizelle
-                        </h4>
+                        <h4>{{ $user->name }}</h4>
                         <h5>
+                            @if(($user->usertype) == 's')
                             Senior Citizen
+                            @else(($user->usertype) == 'c')
+                            Care Taker
+                            @endif
                         </h5>
                         <br>
 
@@ -50,7 +60,7 @@
                                 <label><b>Name :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Danita Chalondra Grizell</p>
+                                <p>{{ $user->name }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -58,7 +68,7 @@
                                 <label><b>Email :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>danitagrizelle19@gmail.com</p>
+                                <p>{{ $user->email }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -66,7 +76,11 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
+                                @if(($user->gender) == 'm')
+                                <p>Male</p>
+                                @else(($user->gender) == 'f')
                                 <p>Female</p>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -74,7 +88,7 @@
                                 <label><b>Birthday :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>19/11/2001</p>
+                                <p>{{ $user->birthdate }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +96,7 @@
                                 <label><b>Age :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>20</p>
+                                <p>{{ $user->age }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -90,7 +104,7 @@
                                 <label><b>Phone :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>123 456 7890</p>
+                                <p>{{ $user->phone }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -98,7 +112,7 @@
                                 <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Los Angeles</p>
+                                <p>{{ $user->address }}</p>
                             </div>
                         </div>
 

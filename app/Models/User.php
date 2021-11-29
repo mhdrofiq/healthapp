@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -17,17 +18,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'gender',
-        'address',
-        'birthdate',
-        'photo',
-        'usertype'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,6 +39,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //when the user sets the password use this function (this is a mutator function)
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['birthdate'])->age;
+    }
     public function temperature()
     {
         return $this->hasMany(Temperature::class);
