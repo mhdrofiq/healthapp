@@ -8,7 +8,7 @@
     <center><img class="mb-4" src="/img/logo.png" alt="" width="300px"></center>
 
 <div class="container">
-            <form class="form-horizontal" role="form" method="POST" action="/register">
+            <form class="form-horizontal" role="form" method="POST" action="/">
                 @csrf
                 <h2 style="font: size 5px;"> Registration Form</h2>
                 <div class="form-group">

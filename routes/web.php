@@ -38,8 +38,6 @@ Route::get('/record', function () {
     return view('record');
 });
 
-
-
 Route::get('/evaluate', function () {
     return view('evaluate');
 });
@@ -61,5 +59,5 @@ Route::get('/home', function () {
 // });
 
 //dont forget to change template to register
-Route::get('register', [RegisterController::class, 'create']);
+Route::get('template', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);

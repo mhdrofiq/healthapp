@@ -10,7 +10,7 @@ class RegisterController extends Controller
     public function create()
     {
         //dont forget to change template to register
-        return view('register');
+        return view('template');
     }
 
     public function store()
@@ -22,7 +22,6 @@ class RegisterController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'usertype' => 'required',
-            'age'=> 'required',
             'birthdate' => 'required',
             'password' => 'required|min:6',
         ]);
