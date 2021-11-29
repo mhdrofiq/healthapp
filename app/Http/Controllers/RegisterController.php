@@ -10,7 +10,7 @@ class RegisterController extends Controller
     public function create()
     {
         //dont forget to change template to register
-        return view('template');
+        return view('register');
     }
 
     public function store()
