@@ -29,20 +29,16 @@ Route::get('/', function () {
 // });
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile', [
+        'user' => User::first()
+    ]);
 });
 
 Route::get('/record', function () {
     return view('record');
 });
 
-Route::get('/', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'register']);
-Route::get('/profile', [UserController::class, 'profile']);
-Route::get('/record', [UserController::class, 'record']);
-Route::get('/evaluate', [UserController::class, 'evaluate']);
-Route::get('/abnormal', [UserController::class, 'abnormal']);
-Route::get('/profile', [ProfileController::class, 'prof']);
+
 
 Route::get('/evaluate', function () {
     return view('evaluate');

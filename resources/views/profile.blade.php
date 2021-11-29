@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -27,27 +26,32 @@
                         <br>
 
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
+                        @if ($message = Session::get('success'))
+                        <img src="images/{{ Session::get('image') }}">
+                        @endif
                         <br><br><br><br>
+
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
+                            
                         </div>
 
                     </div>
                 </div>
-                @foreach ($users as $user)
-                <div class="col-md-6">
-                    <div class="profile-head">
-                        <h4>{{ $users->name }}</h4>
+
+
 
 
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <h4>
-                            Danita Chalondra Grizelle
-                        </h4>
+                        <h4>{{ $user->name }}</h4>
                         <h5>
+                            @if(($user->usertype) == 's')
                             Senior Citizen
+                            @else(($user->usertype) == 'c')
+                            Care Taker
+                            @endif
                         </h5>
                         <br>
 
@@ -56,7 +60,7 @@
                                 <label><b>Name :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->name }}</p>
+                                <p>{{ $user->name }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -64,7 +68,7 @@
                                 <label><b>Email :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->email }}</p>
+                                <p>{{ $user->email }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -72,7 +76,11 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->gender }}</p>
+                                @if(($user->gender) == 'm')
+                                <p>Male</p>
+                                @else(($user->gender) == 'f')
+                                <p>Female</p>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -80,7 +88,7 @@
                                 <label><b>Birthday :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->birthdate }}</p>
+                                <p>{{ $user->birthdate }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -88,7 +96,7 @@
                                 <label><b>Age :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>20</p>
+                                <p>{{ $user->age }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -96,7 +104,7 @@
                                 <label><b>Phone :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->phone }}</p>
+                                <p>{{ $user->phone }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -104,13 +112,12 @@
                                 <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $users->address }}</p>
+                                <p>{{ $user->address }}</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                @endforeach
                 <div class="col-md-2">
                     <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a>
                 </div>
