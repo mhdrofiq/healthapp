@@ -27,10 +27,10 @@ class RegisterController extends Controller
         ]);
 
         // uncomment to debug validation
-        // dd('successful validation');
+        dd('successful validation');
 
-        User::create($attributes);
+        // User::create($attributes);
 
-        return redirect('home');
+        // return redirect('home');
     }
 }
