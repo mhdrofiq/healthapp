@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Temperature;
 use App\Models\User;
-use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +20,18 @@ use App\Http\Controllers\RegisterController;
 */
 
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/register', function () {
+//     return view('register');
+// });
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile', [
+        'user' => User::first()
+    ]);
 });
 
 Route::get('/record', function () {
@@ -53,6 +58,13 @@ Route::get('/home', function () {
 //     return view('template');
 // });
 
+Route::get('/', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login');
+
+Route::middleware('auth')->group(function(){
+    Route::post('logout', LogoutController::class)->name('logout');
+});
+
 //dont forget to change template to register
-Route::get('template', [RegisterController::class, 'create']);
+Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);

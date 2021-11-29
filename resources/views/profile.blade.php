@@ -27,21 +27,28 @@
 
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
                         <br><br><br><br>
+
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
+                            
                         </div>
 
                     </div>
                 </div>
 
+
+
+
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <h4>
-                            Danita Chalondra Grizelle
-                        </h4>
+                       <h4>{{ Auth::user()->name }}</h4>
                         <h5>
+                            @if((Auth::user()->usertype) == 's')
                             Senior Citizen
+                            @else((Auth::user()->usertype) == 'c')
+                            Care Taker
+                            @endif
                         </h5>
                         <br>
 
@@ -50,7 +57,7 @@
                                 <label><b>Name :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Danita Chalondra Grizell</p>
+                                <p>{{ Auth::user()->name }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -58,7 +65,7 @@
                                 <label><b>Email :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>danitagrizelle19@gmail.com</p>
+                                <p>{{ Auth::user()->email }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -66,7 +73,11 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
+                                @if((Auth::user()->gender) == 'm')
+                                <p>Male</p>
+                                @else((Auth::user()->gender) == 'f')
                                 <p>Female</p>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -74,7 +85,7 @@
                                 <label><b>Birthday :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>19/11/2001</p>
+                                <p>{{ Auth::user()->birthdate }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +93,7 @@
                                 <label><b>Age :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>20</p>
+                                <p>{{ Auth::user()->age }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -90,7 +101,7 @@
                                 <label><b>Phone :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>123 456 7890</p>
+                                <p>{{ Auth::user()->phone }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -98,7 +109,7 @@
                                 <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>Los Angeles</p>
+                                <p>{{ Auth::user()->address }}</p>
                             </div>
                         </div>
 
