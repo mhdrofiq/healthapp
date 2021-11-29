@@ -27,8 +27,12 @@
           <a class="nav-link" href="{{url('record')}}">Data Record</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="\">Logout</a>
+          <form method="POST" action="{{route('logout')}}">
+          @csrf
+          <button class="nav-link dropdown-item" type="submit" style="background-color: transparent;">Logout</button>
+          </form>
         </li>
+        
         <!--<li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>-->

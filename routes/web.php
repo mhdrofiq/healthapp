@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Temperature;
 use App\Models\User;
@@ -55,3 +57,10 @@ Route::get('/template', function () {
 });
 
 Route::post('register', [AuthController::class, 'register'])->name('register-user');
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login');
+
+Route::middleware('auth')->group(function(){
+    Route::post('logout', LogoutController::class)->name('logout');
+});
