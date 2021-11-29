@@ -26,9 +26,6 @@
                         <br>
 
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
-                        @if ($message = Session::get('success'))
-                        <img src="images/{{ Session::get('image') }}">
-                        @endif
                         <br><br><br><br>
 
                         <div class="file btn btn-lg btn-primary">
@@ -45,11 +42,11 @@
 
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <h4>{{ $user->name }}</h4>
+                       <h4>{{ Auth::user()->name }}</h4>
                         <h5>
-                            @if(($user->usertype) == 's')
+                            @if((Auth::user()->usertype) == 's')
                             Senior Citizen
-                            @else(($user->usertype) == 'c')
+                            @else((Auth::user()->usertype) == 'c')
                             Care Taker
                             @endif
                         </h5>
@@ -60,7 +57,7 @@
                                 <label><b>Name :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->name }}</p>
+                                <p>{{ Auth::user()->name }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -68,7 +65,7 @@
                                 <label><b>Email :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->email }}</p>
+                                <p>{{ Auth::user()->email }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -76,9 +73,9 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
-                                @if(($user->gender) == 'm')
+                                @if((Auth::user()->gender) == 'm')
                                 <p>Male</p>
-                                @else(($user->gender) == 'f')
+                                @else((Auth::user()->gender) == 'f')
                                 <p>Female</p>
                                 @endif
                             </div>
@@ -88,7 +85,7 @@
                                 <label><b>Birthday :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->birthdate }}</p>
+                                <p>{{ Auth::user()->birthdate }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -96,7 +93,7 @@
                                 <label><b>Age :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->age }}</p>
+                                <p>{{ Auth::user()->age }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -104,7 +101,7 @@
                                 <label><b>Phone :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->phone }}</p>
+                                <p>{{ Auth::user()->phone }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -112,7 +109,7 @@
                                 <label><b>Address :</b></label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ $user->address }}</p>
+                                <p>{{ Auth::user()->address }}</p>
                             </div>
                         </div>
 
