@@ -59,5 +59,5 @@ Route::get('/home', function () {
 // });
 
 //dont forget to change template to register
-Route::get('template', [RegisterController::class, 'create']);
+Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
