@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Temperature;
 use App\Models\User;
-use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +29,16 @@ Route::get('/', function () {
 // });
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile', [
+        'user' => User::first()
+    ]);
 });
 
 Route::get('/record', function () {
     return view('record');
 });
+
+
 
 Route::get('/evaluate', function () {
     return view('evaluate');
