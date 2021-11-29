@@ -4,8 +4,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Temperature;
 use App\Models\User;
 
