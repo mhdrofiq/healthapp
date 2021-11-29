@@ -67,5 +67,5 @@ Route::middleware('auth')->group(function(){
 });
 
 //dont forget to change template to register
-Route::get('register', [RegisterController::class, 'create']);
+Route::get('template', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
