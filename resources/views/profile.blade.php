@@ -1,26 +1,4 @@
-<?
-    $hostname = "localhost";
-    $username = "root";
-    $email = "";
-    $database = "healthapp";
 
-    $conn = mysqli_connect($hostname, $username, $email, $database);
-    if(!$conn)
-	    echo('Error: ' . mysqli_connect_error($conn));
-    session_start();
-?>
-<?php
-session_start();
-$user_check=$_SESSION[''];
-$ses_sql=mysqli_query($con,"select name,email from users where name='$user_check'");
-$row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-$register_session=$row['username'];
-$register_id=$row['email'];
-if(!isset($register_session) || $register_session==NULL) {
- echo "Go back";
- //header("Location: index.php");
-}
-?>
 <!doctype html>
 <html lang="en">
 
@@ -38,13 +16,6 @@ if(!isset($register_session) || $register_session==NULL) {
     </header>
     <img style="margin-left: 40%;" class="mb-4" src="/img/logo.png" alt="" width="300px">
     <div class="container emp-profile">
-    <?php
-$sql="SELECT * FROM users where email=$register_id";
-$result=mysqli_query($con,$sql);
-?>
-<?php
-while($rows=mysqli_fetch_array($result)){
-    ?>
         <form method="post">
        
             <div class="row">
@@ -63,7 +34,7 @@ while($rows=mysqli_fetch_array($result)){
                         
                     </div>
                 </div>
-                @foreach ($users as $users)
+                @foreach ($users as $user)
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h4>{{ $users->name }}</h4>
@@ -140,10 +111,6 @@ while($rows=mysqli_fetch_array($result)){
         </form>
     </div>
 
-    <?php 
-// close while loop 
-}
-?>
     <script src="../assets/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>

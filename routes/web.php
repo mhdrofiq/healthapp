@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::get('/profile', [UserController::class, 'profile']);
 Route::get('/record', [UserController::class, 'record']);
 Route::get('/evaluate', [UserController::class, 'evaluate']);
 Route::get('/abnormal', [UserController::class, 'abnormal']);
+Route::get('/profile', [ProfileController::class, 'prof']);
+
 
 Route::get('/home', [UserController::class, 'home']);
 

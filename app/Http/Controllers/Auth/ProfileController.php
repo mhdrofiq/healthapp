@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
     //
-    public function index(){
+    public function prof(){
         $users = DB::select('select * from healthapp');
-        return view('profile',['users'=>$users]);
+        return view('profile');
         }
 }
