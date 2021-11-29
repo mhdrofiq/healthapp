@@ -26,9 +26,6 @@
                         <br>
 
                         <img style="border-radius: 50%;" src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" />
-                        @if ($message = Session::get('success'))
-                        <img src="images/{{ Session::get('image') }}">
-                        @endif
                         <br><br><br><br>
 
                         <div class="file btn btn-lg btn-primary">
