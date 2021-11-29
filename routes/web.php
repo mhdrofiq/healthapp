@@ -21,9 +21,9 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/register', function () {
+//     return view('register');
+// });
 
 Route::get('/profile', function () {
     return view('profile');
@@ -54,5 +54,5 @@ Route::get('/home', function () {
 // });
 
 //dont forget to change template to register
-Route::get('template', [RegisterController::class, 'create']);
+Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
