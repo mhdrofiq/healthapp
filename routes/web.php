@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -59,6 +61,13 @@ Route::get('/home', function () {
 // Route::get('/template', function () {
 //     return view('template');
 // });
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login');
+
+Route::middleware('auth')->group(function(){
+    Route::post('logout', LogoutController::class)->name('logout');
+});
 
 //dont forget to change template to register
 Route::get('register', [RegisterController::class, 'create']);
