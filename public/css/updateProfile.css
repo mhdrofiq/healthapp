@@ -10,7 +10,7 @@ body {
 }
 
 h5 {
-    color: #0062cc;
+    color: red;
 }
 
 .emp-profile {
@@ -46,4 +46,16 @@ h5 {
 label {
     font-weight: 600;
     font-size: 15px;
+}
+
+input[value] {
+    color: grey;
+}
+
+input:focus {
+    border: 3px solid #555;
+}
+
+button:hover{
+    color: #096bd5;
 }
