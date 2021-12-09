@@ -4,8 +4,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Temperature;
 use App\Models\User;
 
@@ -21,9 +20,9 @@ use App\Models\User;
 */
 
 
-//Route::get('/', function () {
-    //return view('login');
-//});
+// Route::get('/', function () {
+//     return view('login');
+// });
 
 // Route::get('/register', function () {
 //     return view('register');
@@ -38,8 +37,6 @@ Route::get('/profile', function () {
 Route::get('/record', function () {
     return view('record');
 });
-
-
 
 Route::get('/evaluate', function () {
     return view('evaluate');
