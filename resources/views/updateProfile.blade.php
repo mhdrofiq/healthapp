@@ -23,7 +23,7 @@
                             <div class="profile-img">
                                 <h2>Edit Profile</h2> <br>
                                 <img src="https://i.ibb.co/XDvNnq4/IU-Photos-107-of-599-Last-fm.webp" alt="" style="border-radius: 50%;"> </br> </br> </br>
-                                <h5>Senior Citizen</h5>
+                                <h5>Caretaker</h5>
                             </div>
                         </div>
                         <!-- edit form column -->

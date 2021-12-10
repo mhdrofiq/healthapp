@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Senior;
 
 class RegisterController extends Controller
 {
@@ -15,13 +16,12 @@ class RegisterController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
+        $attributes1 = request()->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'required',
             'gender' => 'required',
             'address' => 'required',
-            'usertype' => 'required',
             'birthdate' => 'required',
             'password' => 'required|min:6',
         ]);
@@ -29,7 +29,21 @@ class RegisterController extends Controller
         // uncomment to debug validation
         // dd('successful validation');
 
-        User::create($attributes);
+        $newuser = User::create($attributes1);
+
+        $attributes2 = request()->validate([
+            'user_id' => $newuser->id,
+            'senior_name' => 'required',
+            'senior_phone' => 'required',
+            'senior_gender' => 'required',
+            'senior_address' => 'required',
+            'senior_birthdate' => 'required',
+        ]);
+
+        // uncomment to debug validation
+        // dd('successful validation');
+
+        Senior::create($attributes2);
 
         return redirect('home');
     }

@@ -44,17 +44,14 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
     public function getAgeAttribute()
     {
         return Carbon::parse($this->attributes['birthdate'])->age;
     }
-    public function temperature()
-    {
-        return $this->hasMany(Temperature::class);
-    }
 
-    public function heartrate()
+    public function senior()
     {
-        return $this->hasMany(Heartrate::class);
+        return $this->hasOne(Senior::class);
     }
 }

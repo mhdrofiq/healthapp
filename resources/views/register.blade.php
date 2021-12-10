@@ -45,7 +45,6 @@
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
                         <input type="phoneNumber" id="phoneNumber" name="phone" placeholder="Phone number" class="form-control">
-                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,15 +54,42 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="usertype" class="col-sm-3 control-label">Register as </label>
-                    <select id="usertype" class="form-control" name="usertype">
-                        <option value="c">Caretaker</option>
-                        <option value="s">Senior citizen</option>
+                    <label for="gender" class="col-sm-3 control-label">Gender </label>
+                    <select id="gender" class="form-control" name="gender">
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
                     </select>
                 </div>
+
+                {{--senior citizen information--}}
+
                 <div class="form-group">
-                    <label for="usertype" class="col-sm-3 control-label">Gender </label>
-                    <select id="gender" class="form-control" name="gender">
+                    <label for="fullName" class="col-sm-3 control-label">Senior's full name</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="senior_name" placeholder="Full Name" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Senior's date of birth</label>
+                    <div class="col-sm-9">
+                        <input type="date" name="senior_birthdate" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Senior's phone number</label>
+                    <div class="col-sm-9">
+                        <input type="phoneNumber" name="senior_phone" placeholder="Phone number" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Address" class="col-sm-3 control-label">Senior's address</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="senior_address" placeholder="Please write your correct address" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="col-sm-3 control-label">Senior's gender </label>
+                    <select id="gender" class="form-control" name="senior_gender">
                         <option value="m">Male</option>
                         <option value="f">Female</option>
                     </select>

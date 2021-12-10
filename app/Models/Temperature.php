@@ -11,8 +11,8 @@ class Temperature extends Model
 
     protected $with = ['user'];
 
-    public function user()
+    public function senior()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Senior::class);
     }
 }

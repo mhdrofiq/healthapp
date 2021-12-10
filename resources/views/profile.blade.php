@@ -43,13 +43,7 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                        <h4>{{ Auth::user()->name }}</h4>
-                        <h5>
-                            @if((Auth::user()->usertype) == 's')
-                            Senior Citizen
-                            @else((Auth::user()->usertype) == 'c')
-                            Care Taker
-                            @endif
-                        </h5>
+                        <h5>Caretaker</h5>
                         <br>
 
                         <div class="row">

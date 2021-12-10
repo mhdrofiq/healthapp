@@ -9,8 +9,10 @@ class Heartrate extends Model
 {
     use HasFactory;
 
-    public function user()
+    protected $with = ['user'];
+
+    public function senior()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Senior::class);
     }
 }
