@@ -4,7 +4,7 @@
     @include('includes.head')
     <title>Data Record</title>
     <!-- Custom styles for this template -->
-    
+    <link href="{{asset('/css/data-record.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -24,19 +24,20 @@
                 ipsum magna irure enim.</p>
             <hr><br>
 
-            <div>
+            <div class="container emp-profile">
                 <h2>Current Location</h2>
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.3407600806077!2d103.63638621551283!3d1.559362461299001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da7154a58c424b%3A0x8c133d77584b5ff8!2sUniversiti%20Teknologi%20Malaysia!5e0!3m2!1sen!2smy!4v1639055488487!5m2!1sen!2smy" 
-                    width=100% 
+                    width=95% 
                     height="450" 
-                    style="border:0;" 
+                    style="border: 0; display: block; margin: 0 auto;"
                     allowfullscreen="" 
                     loading="lazy">
+                    
                 </iframe>
             </div><br>
             
-            <div>
+            <div class="container emp-profile">
                 <h2>Temperature Record</h2>
                 <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
                     Tempor esse non reprehenderit officia in exercitation labore dolore 
@@ -46,7 +47,7 @@
                 </div>
             </div><br>
             
-            <div>
+            <div class="container emp-profile">
                 <h2>Heart Rate Record</h2>
                 <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
                     Tempor esse non reprehenderit officia in exercitation labore dolore 
@@ -56,7 +57,7 @@
                 </div>
             </div><br>
 
-            <div class="table-responsive">
+            <div class="container emp-profile">
                 <table class="table table-striped table-sm">
                 <thead>
                     <tr>
