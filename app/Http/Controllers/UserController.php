@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
+
+use function Ramsey\Uuid\v6;
 
 class UserController extends Controller
 {
@@ -36,11 +39,7 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->save();
 
-        echo "<script>";
-        echo "alert('Profile updated successfully !');";
-        echo "</script>";
-        
-        return view('profile');
+        return Redirect('profile')->with('profileUpdated', 'Profile updated successfully !');
     }
 
     public function changePasswordView()
@@ -58,24 +57,10 @@ class UserController extends Controller
                 $user->password = $request->newPassword;
                 $user->save();
 
-                echo "<script>";
-                echo "alert('Password changed successfully !');";
-                echo "</script>";
-
-                return view('profile');
-            } else {
-                echo "<script>";
-                echo "alert('Confirm new password must be the same as new password !');";
-                echo "</script>";
-
-                return view('changePassword');
-            }
-        } else {
-            echo "<script>";
-            echo "alert('Wrong Password !');";
-            echo "</script>";
-
-            return view('changePassword');
-        }
+                return redirect('profile')->with('passwordChanged', 'Password changed successfully !');
+            } else
+                return redirect('changePassword')->with('differentNewPassword', 'Confirm new password must be the same as new password !');
+        } else
+            return redirect('changePassword')->with('wrongPassword', 'Wrong Password !');
     }
 }

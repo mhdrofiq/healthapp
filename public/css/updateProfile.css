@@ -2,7 +2,7 @@ body {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
 }
 .avatar {
     width: 200px;

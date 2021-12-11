@@ -60,6 +60,16 @@
             </div>
         </div>
     </section>
+    @if(Session::has('differentNewPassword'))
+    <script>
+        alert('"Confirm New Password" must be the same as "New Password" !');
+    </script>
+    @endif
+    @if(Session::has('wrongPassword'))
+    <script>
+        alert('Wrong Password !');
+    </script>
+    @endif
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
