@@ -16,10 +16,10 @@ class SeniorFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'name' => $this->faker->name(),
-            'phone' => $this->faker->phoneNumber,
-            'address' => $this->faker->address,
-            'birthdate' => $this->faker->date,
+            'senior_name' => $this->faker->name(),
+            'senior_phone' => $this->faker->phoneNumber,
+            'senior_address' => $this->faker->address,
+            'senior_birthdate' => $this->faker->date,
         ];
     }
 }

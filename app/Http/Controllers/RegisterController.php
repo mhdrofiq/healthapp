@@ -24,15 +24,6 @@ class RegisterController extends Controller
             'address' => 'required',
             'birthdate' => 'required',
             'password' => 'required|min:6',
-        ]);
-
-        // uncomment to debug validation
-        // dd('successful validation');
-
-        $newuser = User::create($attributes1);
-
-        $attributes2 = request()->validate([
-            'user_id' => $newuser->id,
             'senior_name' => 'required',
             'senior_phone' => 'required',
             'senior_gender' => 'required',
@@ -40,10 +31,42 @@ class RegisterController extends Controller
             'senior_birthdate' => 'required',
         ]);
 
-        // uncomment to debug validation
-        // dd('successful validation');
+        //var_dump(request()->all());
+        //$data = request()->all;
 
-        Senior::create($attributes2);
+        //uncomment to debug validation
+        //dd('successful validation');
+
+        $user = User::create(request([
+            'name', 
+            'email', 
+            'phone', 
+            'gender',
+            'address',
+            'birthdate',
+            'password',
+        ]));
+
+        $user->save();
+
+        $senior = Senior::create(request([
+            'user_id' => $user->id,
+            'senior_name',
+            'senior_phone', 
+            'senior_gender',
+            'senior_address',
+            'senior_birthdate',
+        ]));
+
+        $senior->save();
+
+        // $attributes2 = request()->validate([
+        //     'user_id' => $newuser->id,
+            
+        // ]);
+
+        // //dd('successful validation');
+        // Senior::create($attributes2);
 
         return redirect('home');
     }

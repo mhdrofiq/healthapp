@@ -40,15 +40,15 @@ class DatabaseSeeder extends Seeder
         //seed seniors
 
         $senior1 = Senior::factory()->create([
-            'gender' => 'm',
+            'senior_gender' => 'm',
             'user_id' => $user1->id
         ]);
         $senior2 = Senior::factory()->create([
-            'gender' => 'f',
+            'senior_gender' => 'f',
             'user_id' => $user2->id
         ]);
         $senior3 = Senior::factory()->create([
-            'gender' => 'f',
+            'senior_gender' => 'f',
             'user_id' => $user3->id
         ]);
 
