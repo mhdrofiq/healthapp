@@ -10,7 +10,14 @@ class senior extends Model
     use HasFactory;
 
     protected $with = ['user'];
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'senior_name',
+        'senior_birthdate',
+        'senior_phone',
+        'senior_address',
+        'senior_gender',
+    ];
 
     public function user()
     {

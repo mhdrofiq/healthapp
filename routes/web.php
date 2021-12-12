@@ -70,8 +70,9 @@ Route::middleware('auth')->group(function(){
     Route::post('logout', LogoutController::class)->name('logout');
 });
 
-//dont forget to change template to register
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
+Route::get('addsenior', [RegisterController::class, 'createsenior']);
+Route::post('addsenior', [RegisterController::class, 'storesenior']);
 
 
