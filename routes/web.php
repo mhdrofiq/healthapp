@@ -20,9 +20,15 @@ use App\Models\User;
 */
 
 
+<<<<<<< HEAD
  //Route::get('/', function () {
   //  return view('login');
  //});
+=======
+// Route::get('/', function () {
+//     return view('login');
+// });
+>>>>>>> main
 
 // Route::get('/register', function () {
 //     return view('register');
@@ -46,17 +52,22 @@ Route::get('/abnormal', function () {
     return view('abnormal');
 });
 
-Route::get('/updateProfile', function () {
-    return view('updateProfile');
-});
-
 Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/changePassword', function() {
+    return view('changePassword');
 });
 
 // Route::get('/template', function () {
 //     return view('template');
 // });
+Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
+Route::post('updateProfile', [UserController::class, 'updateProfile']);
+
+Route::get('changePassword', [UserController::class, 'changePasswordView']);
+Route::post('changePassword', [UserController::class, 'changePassword']);
 
 Route::get('/', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login');
@@ -65,6 +76,9 @@ Route::middleware('auth')->group(function(){
     Route::post('logout', LogoutController::class)->name('logout');
 });
 
-//dont forget to change template to register
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
+Route::get('addsenior', [RegisterController::class, 'createsenior']);
+Route::post('addsenior', [RegisterController::class, 'storesenior']);
+
+
