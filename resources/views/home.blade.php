@@ -26,33 +26,7 @@
                 <a href="../examples/" class="btn btn-primary btn-lg px-4">call to action</a>
             </div>
 
-            <hr class="col-3 col-md-2 mb-5">
-
-            <div class="row g-5">
-                <div class="col-md-6">
-                    <h2>About CareWear</h2>
-                    <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
-                        Tempor esse non reprehenderit officia in exercitation labore dolore 
-                        mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
-                    <ul class="icon-list">
-                        <li><a href="...">Link to somewhere</a></li>
-                        <li><a href="...">Link to somewhere</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-6">
-                    <h2>About Our Product</h2>
-                    <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna. 
-                        Tempor esse non reprehenderit officia in exercitation labore dolore 
-                        mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
-                    <ul class="icon-list">
-                        <li><a href="...">Link to somewhere</a></li>
-                        <li><a href="...">Link to somewhere</a></li>
-                        <li><a href="...">Link to somewhere</a></li>
-                        <li><a href="...">Link to somewhere</a></li>
-                    </ul>
-                </div>
-            </div>
+            
         </main>
 
         
