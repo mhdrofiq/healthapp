@@ -52,6 +52,10 @@ Route::get('/abnormal', function () {
     return view('abnormal');
 });
 
+Route::get('/normal', function () {
+    return view('normal');
+});
+
 Route::get('/home', function () {
     return view('home');
 });
