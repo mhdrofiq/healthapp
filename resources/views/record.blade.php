@@ -16,7 +16,7 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
-            <h1 class="text-white">Your Data Record</h1>
+            <h1 class="text-white">{{ Auth::user()->senior->senior_name }}'s Data Record</h1>
             <p class="text-white">Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem 
                 tempor mollit. In est laboris laboris deserunt ullamco ea cillum deserunt 
                 tempor. Culpa exercitation consectetur et est minim reprehenderit proident. 
