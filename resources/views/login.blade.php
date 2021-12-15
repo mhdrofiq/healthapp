@@ -30,7 +30,7 @@
         <div class="alert alert-danger">
             {{ session()->get('error') }}
         </div>
-        @endif
+        @endif,m 
         <form method="post" action="{{ route('login') }}" class="needs-validation" novalidate>
             @csrf
             <img class="mb-4" src="/img/logo.png" alt="" width="400px">
