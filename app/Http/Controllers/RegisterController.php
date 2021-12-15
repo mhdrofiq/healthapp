@@ -29,11 +29,8 @@ class RegisterController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'address' => 'required',
-<<<<<<< HEAD
-            'usertype' => 'required',
+            //'usertype' => 'required',
             'age' => 'required',
-=======
->>>>>>> main
             'birthdate' => 'required',
             'password' => 'required|min:6',
         ]));

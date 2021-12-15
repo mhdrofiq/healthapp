@@ -20,15 +20,9 @@ use App\Models\User;
 */
 
 
-<<<<<<< HEAD
- //Route::get('/', function () {
+ //Route::get('/') function () {
   //  return view('login');
  //});
-=======
-// Route::get('/', function () {
-//     return view('login');
-// });
->>>>>>> main
 
 // Route::get('/register', function () {
 //     return view('register');
