@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Temperature;
+use App\Models\Senior;
 use App\Models\User;
 
 /*
