@@ -31,7 +31,7 @@
                         <div class="file btn btn-lg btn-primary">
                             Change Photo
                             <input type="file" name="file" />
-                            
+
                         </div>
 
                     </div>
@@ -42,7 +42,7 @@
 
                 <div class="col-md-6">
                     <div class="profile-head">
-                       <h4>{{ Auth::user()->name }}</h4>
+                        <h4>{{ Auth::user()->name }}</h4>
                         <h5>
                             @if((Auth::user()->usertype) == 's')
                             Senior Citizen
@@ -122,6 +122,17 @@
 
         </form>
     </div>
+    @if(Session::has('profileUpdated'))
+    <script>
+        alert('Profile updated successfully !');
+    </script>
+    @endif
+
+    @if(Session::has('passwordChanged'))
+    <script>
+        alert('Password changed successfully !');
+    </script>
+    @endif
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js">
     </script>
