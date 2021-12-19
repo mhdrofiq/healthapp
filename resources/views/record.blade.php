@@ -17,21 +17,15 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
 
         <main>
-            <h1>Your Data Record</h1>
-            <p>Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem
+            <h1 class="text-white">{{ Auth::user()->senior->senior_name }}'s Data Record</h1>
+            <p class="text-white">Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem
                 tempor mollit. In est laboris laboris deserunt ullamco ea cillum deserunt
                 tempor. Culpa exercitation consectetur et est minim reprehenderit proident.
                 Mollit occaecat deserunt minim commodo laboris aliqua aliqua occaecat anim
                 ipsum magna irure enim.</p>
-            <hr><br>
+            <hr class="text-white"><br>
 
-            <div class="container emp-profile">
-                <h2>Current Location</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.3407600806077!2d103.63638621551283!3d1.559362461299001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da7154a58c424b%3A0x8c133d77584b5ff8!2sUniversiti%20Teknologi%20Malaysia!5e0!3m2!1sen!2smy!4v1639055488487!5m2!1sen!2smy" width=95% height="450" style="border: 0; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy">
-
-                </iframe>
-            </div><br>
-
+            
             <div class="container emp-profile">
                 <h2>Temperature Record</h2>
                 <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna.

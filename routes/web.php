@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Temperature;
+use App\Models\Senior;
 use App\Models\User;
 
 /*
@@ -21,9 +22,9 @@ use App\Models\User;
 */
 
 
-// Route::get('/', function () {
-//     return view('login');
-// });
+ //Route::get('/') function () {
+  //  return view('login');
+ //});
 
 // Route::get('/register', function () {
 //     return view('register');
@@ -41,6 +42,10 @@ Route::get('/evaluate', function () {
 
 Route::get('/abnormal', function () {
     return view('abnormal');
+});
+
+Route::get('/normal', function () {
+    return view('normal');
 });
 
 Route::get('/home', function () {
