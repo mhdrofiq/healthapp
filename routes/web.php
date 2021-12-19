@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
@@ -33,10 +34,6 @@ Route::get('/profile', function () {
     return view('profile', [
         'user' => User::first()
     ]);
-});
-
-Route::get('/record', function () {
-    return view('record');
 });
 
 Route::get('/evaluate', function () {
@@ -80,4 +77,4 @@ Route::post('register', [RegisterController::class, 'store']);
 Route::get('addsenior', [RegisterController::class, 'createsenior']);
 Route::post('addsenior', [RegisterController::class, 'storesenior']);
 
-
+Route::get('record', [RecordController::class, 'heartRate']);
