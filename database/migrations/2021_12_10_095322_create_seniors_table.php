@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHeartratesTable extends Migration
+class CreateSeniorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateHeartratesTable extends Migration
      */
     public function up()
     {
-        Schema::create('heartrates', function (Blueprint $table) {
+        Schema::create('seniors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('senior_id');
-            $table->integer('bpm');
-            $table->timestamp('recordtime_hr');
+            $table->foreignId('user_id');
+            $table->string('senior_name');
+            $table->string('senior_phone');
+            $table->char('senior_gender');
+            $table->text('senior_address');
+            $table->date('senior_birthdate');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateHeartratesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heartrates');
+        Schema::dropIfExists('seniors');
     }
 }

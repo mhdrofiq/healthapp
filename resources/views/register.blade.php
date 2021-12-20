@@ -45,7 +45,6 @@
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
                         <input type="phoneNumber" id="phoneNumber" name="phone" placeholder="Phone number" class="form-control">
-                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,14 +54,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="usertype" class="col-sm-3 control-label">Register as </label>
-                    <select id="usertype" class="form-control" name="usertype">
-                        <option value="c">Caretaker</option>
-                        <option value="s">Senior citizen</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="usertype" class="col-sm-3 control-label">Gender </label>
+                    <label for="gender" class="col-sm-3 control-label">Gender </label>
                     <select id="gender" class="form-control" name="gender">
                         <option value="m">Male</option>
                         <option value="f">Female</option>
