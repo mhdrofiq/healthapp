@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\abnormalController;
+use App\Http\Controllers\AdminController;
 use App\Models\Temperature;
 use App\Models\Senior;
 use App\Models\User;
@@ -48,9 +49,9 @@ Route::get('/changePassword', function() {
     return view('changePassword');
 });
 
-// Route::get('/template', function () {
-//     return view('template');
-// });
+Route::get('/template', function () {
+    return view('template');
+});
 
 Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
 Route::post('updateProfile', [UserController::class, 'updateProfile']);
@@ -73,3 +74,10 @@ Route::post('addsenior', [RegisterController::class, 'storesenior']);
 Route::get('record', [RecordController::class, 'heartRate']);
 
 //Route::get('abnormality', [abnormalController::class, 'checkData']);
+
+//guest means if user is already logged in, guest will prevent them from accessing login again until they've logged out
+Route::get('adminLogin', [AdminController::class, 'create'])->middleware('guest'); 
+Route::post('adminLogin', [AdminController::class, 'store'])->middleware('guest'); 
+//auth means the user cannot log out unless they've already been authenticated (logged in)
+Route::get('adminLogout', [AdminController::class, 'destroy'])->middleware('auth:admin');
+Route::get('adminHome', [AdminController::class, 'home']);
