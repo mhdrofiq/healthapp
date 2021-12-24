@@ -9,8 +9,6 @@ class Temperature extends Model
 {
     use HasFactory;
 
-    protected $with = ['user'];
-
     public function senior()
     {
         return $this->belongsTo(Senior::class);

@@ -6,6 +6,7 @@ use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\abnormalController;
 use App\Models\Temperature;
 use App\Models\Senior;
 use App\Models\User;
@@ -20,15 +21,6 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
- //Route::get('/') function () {
-  //  return view('login');
- //});
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
 
 Route::get('/profile', function () {
     return view('profile', [
@@ -59,6 +51,7 @@ Route::get('/changePassword', function() {
 // Route::get('/template', function () {
 //     return view('template');
 // });
+
 Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
 Route::post('updateProfile', [UserController::class, 'updateProfile']);
 
@@ -78,3 +71,5 @@ Route::get('addsenior', [RegisterController::class, 'createsenior']);
 Route::post('addsenior', [RegisterController::class, 'storesenior']);
 
 Route::get('record', [RecordController::class, 'heartRate']);
+
+//Route::get('abnormality', [abnormalController::class, 'checkData']);
