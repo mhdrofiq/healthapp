@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeniorsTable extends Migration
+class CreateDevicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateSeniorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seniors', function (Blueprint $table) {
+        Schema::create('devices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
-            $table->string('senior_name');
-            $table->string('senior_phone');
-            $table->char('senior_gender');
-            $table->text('senior_address');
-            $table->date('senior_birthdate');
             $table->timestamps();
+            $table->foreignId('senior_id')->nullable();
+            $table->integer('temperature');
+            $table->integer('bpm');
+            $table->timestamp('record_time');
         });
     }
 
@@ -32,6 +30,6 @@ class CreateSeniorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seniors');
+        Schema::dropIfExists('devices');
     }
 }

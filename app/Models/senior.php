@@ -33,4 +33,9 @@ class senior extends Model
     {
         return $this->hasMany(Heartrate::class);
     }
+
+    public function device()
+    {
+        return $this->hasOne(Device::class);
+    }
 }

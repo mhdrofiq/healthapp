@@ -6,6 +6,7 @@ use App\Models\Heartrate;
 use App\Models\Temperature;
 use App\Models\User;
 use App\Models\Senior;
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,14 @@ class DatabaseSeeder extends Seeder
         Senior::truncate();
         Temperature::truncate();
         Heartrate::truncate();
+        Admin::truncate();
+
+        //seed admin
+
+        Admin::factory()->create([
+            'username' => 'admin',
+            'password' => bcrypt('pass'),
+        ]);
 
         //seed users (caretakers)
         
