@@ -9,8 +9,15 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function senior()
     {
         return $this->belongsTo(Senior::class);
+    }
+
+    public function sensor_data()
+    {
+        return $this->hasMany(SensorData::class);
     }
 }

@@ -7,6 +7,8 @@ use App\Models\Temperature;
 use App\Models\User;
 use App\Models\Senior;
 use App\Models\Admin;
+use App\Models\Device;
+use App\Models\SensorData;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -24,8 +26,10 @@ class DatabaseSeeder extends Seeder
         Temperature::truncate();
         Heartrate::truncate();
         Admin::truncate();
+        Device::truncate();
+        SensorData::truncate();
 
-        //seed admin
+        //seed admins
 
         Admin::factory()->create([
             'username' => 'admin',
@@ -83,6 +87,17 @@ class DatabaseSeeder extends Seeder
         ]);
         Heartrate::factory(5)->create([
             'senior_id'=> $senior3->id
+        ]);
+
+        //seed devices
+
+        $device1 = Device::factory()->create([
+            'senior_id' => $senior1->id,
+        ]);
+
+        //seed sensor data
+        SensorData::factory(3)->create([
+            'device_id' => $device1->id,
         ]);
     }
 }
