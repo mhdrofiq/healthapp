@@ -7,20 +7,25 @@ use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
-    public function home()
+    public function homeView()
     {
-        return view('adminHome');
+        return view('admin.adminHome');
+    }
+
+    public function manageCaretakersView()
+    {
+        return view('admin.manageCaretakers');
     }
 
     public function create()
     {
-        return view('adminLogin');
+        return view('admin.adminLogin');
     }
 
     public function store()
     {
         $attributes = request()->validate([
-            'username' => 'required|exists:admins',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
@@ -32,7 +37,7 @@ class AdminController extends Controller
         }
         //if the auth failed
         throw ValidationException::withMessages([
-            'username' => 'Your provided credentials could not be verified'
+            'errormsg' => 'Your username or password is invalid'
         ]);
     }
 
