@@ -4,17 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
+use App\Models\Senior;
+use App\Models\Device;
 
 class AdminController extends Controller
 {
     public function homeView()
     {
-        return view('admin.adminHome');
+        return view('admin.adminHome', [
+            'devices' => Device::all()->whereNotNull('senior_id'),
+        ]);
     }
 
     public function manageCaretakersView()
     {
-        return view('admin.manageCaretakers');
+        return view('admin.manageCaretakers', [
+            'users' => User::all(),
+        ]);
+    }
+
+    public function manageSeniorsView()
+    {
+        return view('admin.manageSeniors', [
+            'seniors' => Senior::all(),
+        ]);
+    }
+
+    public function manageDevicesView()
+    {
+        return view('admin.manageDevices',[
+            'devices' => Device::all(),
+        ]);
     }
 
     public function create()
@@ -45,6 +66,6 @@ class AdminController extends Controller
     {
         //ddd('this is destroy');
         auth()->guard('admin')->logout();
-        return redirect('adminLogin')->with('success', 'Goodbye!');
+        return redirect('adminLogin')->with('success', 'See you again!');
     }
 }

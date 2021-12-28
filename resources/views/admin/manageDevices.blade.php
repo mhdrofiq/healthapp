@@ -29,10 +29,10 @@
             
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">List of Caretakers</h1>
+                    <h1 class="h2">List of Devices</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <button type="button" class="btn btn-sm btn-success">
-                            Add a new caretaker
+                            Add a new device
                         </button>
                     </div>
                 </div>
@@ -41,36 +41,24 @@
                     <table class="table table-bordered table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Caretaker ID</th>
-                                <th scope="col">Full name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone number</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Date of birth</th>
-                                <th scope="col">Edit info</th>
+                                <th scope="col">Device ID</th>
+                                <th scope="col">Wearer</th>
+                                <th scope="col">Delete device</th>
                             </tr>                            
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($devices as $device)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->phone }}</td>
-                                <td>{{ $user->address }}</td>
-                                @if ($user->gender == 'm')
-                                    <td>Male</td>
+                                <td>{{ $device->id }}</td>
+                                @if ($device->senior != null)
+                                <td>{{ $device->senior->senior_name }}</td> 
                                 @else
-                                    <td>Female</td>
+                                <td>Device is unassigned</td>
                                 @endif
-                                <td>{{ $user->birthdate }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-warning">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                                </td>
+                                <td><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></td>
                             </tr>
                             @endforeach
+                            
                         </tbody>
                     </table>
                 </div>

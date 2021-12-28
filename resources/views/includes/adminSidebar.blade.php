@@ -17,18 +17,13 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link text-white">
-            Orders
+            <a href="/manageSeniors" class="nav-link {{ request()->is('manageSeniors') ? 'active aria-current="page"' : 'text-white' }}">
+            Manage Seniors
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link text-white">
-            Products
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-            Customers
+            <a href="/manageDevices" class="nav-link {{ request()->is('manageDevices') ? 'active aria-current="page"' : 'text-white' }}">
+            Manage Devices
             </a>
         </li>
     </ul>
