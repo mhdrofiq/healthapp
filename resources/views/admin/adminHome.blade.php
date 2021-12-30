@@ -2,21 +2,6 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-            }
-        }
-    </style>
         
     <!-- Custom styles for this template -->
 </head> 
@@ -27,12 +12,12 @@
 
             @include('includes.adminSidebar')
             
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-xl-10 col-lg-9 col-sm-10 ms-sm-auto px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Active devices and assigned senior citizens</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <button type="button" class="btn btn-sm btn-success">
-                            Assign a device and senior citizen
+                            <i class="fa fa-plus"></i> Assign a device and senior citizen
                         </button>
                     </div>
                 </div>
@@ -57,7 +42,7 @@
                                 <td>{{ $device->senior->id }}</td>
                                 <td>{{ $device->senior->senior_name }}</td>
                                 <td>{{ $device->senior->user->name }}</td>
-                                <td><button type="button" class="btn btn-sm btn-warning">Edit</button></td>
+                                <td><button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></button></td>
                             </tr>
                             @endforeach
                         </tbody>

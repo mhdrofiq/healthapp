@@ -2,20 +2,7 @@
 <html lang="en">
     <head>
         @include('includes.head')
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-            }
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-                }
-            }
-        </style>
+
         <!-- Custom styles for this template -->
         <link href="{{asset('/css/signin.css')}}" rel="stylesheet">
     </head>
@@ -46,6 +33,12 @@
             @enderror
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+            <label class="my-3">
+                Not an admin? 
+                <a href="/">Caretaker login</a>
+            </label>
+
         </form>
     </main>
 

@@ -2,21 +2,6 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-            }
-        }
-    </style>
         
     <!-- Custom styles for this template -->
 </head> 
@@ -27,12 +12,12 @@
 
             @include('includes.adminSidebar')
             
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-xl-10 col-lg-9 col-sm-10 ms-sm-auto px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">List of Devices</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <button type="button" class="btn btn-sm btn-success">
-                            Add a new device
+                            <i class="fa fa-plus"></i> Add a new device
                         </button>
                     </div>
                 </div>
@@ -43,7 +28,7 @@
                             <tr>
                                 <th scope="col">Device ID</th>
                                 <th scope="col">Wearer</th>
-                                <th scope="col">Delete device</th>
+                                <th scope="col">Edit</th>
                             </tr>                            
                         </thead>
                         <tbody>
@@ -55,7 +40,9 @@
                                 @else
                                 <td>Device is unassigned</td>
                                 @endif
-                                <td><button type="button" class="btn btn-sm btn-outline-danger">Delete</button></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></button>
+                                </td>
                             </tr>
                             @endforeach
                             

@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark pt-3 position-fixed min-vh-100" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+<div class="col-xl-2 col-lg-3 col-sm-2 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark pt-3 position-fixed vh-100">
+    <a href="/adminHome" class="d-flex mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <span class="fs-4">Admin Control</span>
     </a>
     <hr>
