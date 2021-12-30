@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\abnormalController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SeniorController;
 use App\Models\Temperature;
 use App\Models\Senior;
 use App\Models\User;
@@ -89,10 +90,12 @@ Route::get('record', [RecordController::class, 'heartRate']);
 // Route::get('changePassword', [UserController::class, 'changePasswordView']);
 // Route::post('changePassword', [UserController::class, 'changePassword']);
 // Route::get('seniorsList', [UserController::class, 'seniorsListView']);
-// SENIOR ROUTES
+
 // Route::get('record', [SeniorController::class, 'recordView']);
 // Route::get('evaluate', [SeniorController::class, 'evaluateView']);
 // Route::get('abnormal', [SeniorController::class, 'abnormalView']);
+Route::get('addSenior', [SeniorController::class, 'create']);
+Route::post('addSenior', [SeniorController::class, 'store']);
 
 //guest means if user is already logged in, guest will prevent them from accessing login again until they've logged out
 //auth means the user cannot log out unless they've already been authenticated (logged in)
