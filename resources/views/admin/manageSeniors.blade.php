@@ -48,9 +48,18 @@
                                     <td>Female</td>
                                 @endif
                                 <td>{{ $senior->senior_birthdate }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></button>
+                                <td class="d-flex">
+                                    <form class="px-1">
+                                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form method="post" action="/deleteSenior/{{ $senior->id }}">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit button" class="btn btn-sm btn-outline-danger" 
+                                        onclick="return confirm('Do you really want to delete this senior citizen?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                                 
                             </tr>

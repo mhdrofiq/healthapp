@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">List of Devices</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <button type="button" class="btn btn-sm btn-success">
+                        <button type="submit button" class="btn btn-sm btn-success" onclick="location.href='{{ url('/addDevice') }}'">
                             <i class="fa fa-plus"></i> Add a new device
                         </button>
                     </div>
@@ -41,7 +41,14 @@
                                 <td>Device is unassigned</td>
                                 @endif
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></button>
+                                    <form method="post" action="/deleteDevice/{{ $device->id }}">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit button" class="btn btn-sm btn-outline-danger" 
+                                        onclick="return confirm('Do you really want to delete this device?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

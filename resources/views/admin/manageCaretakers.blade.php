@@ -50,9 +50,18 @@
                                     <td>Female</td>
                                 @endif
                                 <td>{{ $user->birthdate }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></button>
+                                <td class="d-flex">
+                                    <form class="px-1">
+                                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form method="post" action="/deleteCaretaker/{{ $user->id }}">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit button" class="btn btn-sm btn-outline-danger" 
+                                        onclick="return confirm('Do you really want to delete this caretaker?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Senior;
 use Illuminate\Support\Facades\Redirect;
 
 use function Ramsey\Uuid\v6;
@@ -62,5 +63,12 @@ class UserController extends Controller
                 return redirect('changePassword')->with('differentNewPassword', 'Confirm new password must be the same as new password !');
         } else
             return redirect('changePassword')->with('wrongPassword', 'Wrong Password !');
+    }
+
+    public function destroyUser(User $user)
+    {
+        Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
+        $user->delete();
+        return back();
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\abnormalController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SeniorController;
+use App\Http\Controllers\DeviceController;
 use App\Models\Temperature;
 use App\Models\Senior;
 use App\Models\User;
@@ -54,12 +55,6 @@ Route::get('/template', function () {
     return view('template');
 });
 
-Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
-Route::post('updateProfile', [UserController::class, 'updateProfile']);
-
-Route::get('changePassword', [UserController::class, 'changePasswordView']);
-Route::post('changePassword', [UserController::class, 'changePassword']);
-
 Route::get('/', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login');
 
@@ -85,17 +80,23 @@ Route::get('record', [RecordController::class, 'heartRate']);
 // Route::get('register', [UserController::class, 'create']);
 // Route::post('register', [UserController::class, 'store']);
 // Route::get('profile', [UserController::class, 'profile']);
-// Route::get('updateProfile', [UserController::class, 'updateProfile'])->middleware('auth');
-// Route::post('updateProfile', [UserController::class, 'updateProfile']);
-// Route::get('changePassword', [UserController::class, 'changePasswordView']);
-// Route::post('changePassword', [UserController::class, 'changePassword']);
 // Route::get('seniorsList', [UserController::class, 'seniorsListView']);
+Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
+Route::post('updateProfile', [UserController::class, 'updateProfile']);
+Route::get('changePassword', [UserController::class, 'changePasswordView']);
+Route::post('changePassword', [UserController::class, 'changePassword']);
+Route::get('editCaretaker', [UserController::class, 'edit'])->middleware('auth:admin'); //TBA
+Route::patch('editCaretaker/{user}', [UserController::class, 'update'])->middleware('auth:admin'); //TBA
+Route::delete('deleteCaretaker/{user}', [UserController::class, 'destroyUser'])->middleware('auth:admin');
 
 // Route::get('record', [SeniorController::class, 'recordView']);
 // Route::get('evaluate', [SeniorController::class, 'evaluateView']);
 // Route::get('abnormal', [SeniorController::class, 'abnormalView']);
-Route::get('addSenior', [SeniorController::class, 'create']);
-Route::post('addSenior', [SeniorController::class, 'store']);
+Route::get('addSenior', [SeniorController::class, 'create'])->middleware('auth:admin');
+Route::post('addSenior', [SeniorController::class, 'store'])->middleware('auth:admin');
+Route::post('editSenior/{senior}', [SeniorController::class, 'edit'])->middleware('auth:admin'); //TBA
+Route::patch('editSenior/{senior}', [SeniorController::class, 'update'])->middleware('auth:admin'); //TBA
+Route::delete('deleteSenior/{senior}', [SeniorController::class, 'destroy'])->middleware('auth:admin');
 
 //guest means if user is already logged in, guest will prevent them from accessing login again until they've logged out
 //auth means the user cannot log out unless they've already been authenticated (logged in)
@@ -104,5 +105,8 @@ Route::post('adminLogin', [AdminController::class, 'store'])->middleware('guest'
 Route::get('adminLogout', [AdminController::class, 'destroy'])->middleware('auth:admin');
 Route::get('adminHome', [AdminController::class, 'homeView']);
 Route::get('manageCaretakers', [AdminController::class, 'manageCaretakersView']);
-Route::get('manageSeniors', [AdminController::class, 'manageSeniorsView']); //TBA
-Route::get('manageDevices', [AdminController::class, 'manageDevicesView']); //TBA
+Route::get('manageSeniors', [AdminController::class, 'manageSeniorsView']);
+Route::get('manageDevices', [AdminController::class, 'manageDevicesView']);
+
+Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:admin');
+Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');

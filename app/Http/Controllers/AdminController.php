@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
 use App\Models\Senior;
 use App\Models\Device;
@@ -11,9 +12,11 @@ use App\Models\Device;
 class AdminController extends Controller
 {
     public function homeView()
-    {
+    {        
         return view('admin.adminHome', [
-            'devices' => Device::all()->whereNotNull('senior_id'),
+            'devices' => Device::whereHas('senior', function(Builder $query){
+                $query->where('user_id', '!=', 'null');
+            })->get(),
         ]);
     }
 
