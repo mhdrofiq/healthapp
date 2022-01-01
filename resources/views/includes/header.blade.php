@@ -21,6 +21,9 @@
           <a class="nav-link" href="{{url('profile')}}">Profile</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{url('seniorList')}}">Senior List</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{url('evaluate')}}">Evaluate Condition</a>
         </li>
         <li class="nav-item">
