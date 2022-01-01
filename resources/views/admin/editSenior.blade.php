@@ -24,13 +24,14 @@
                 </div>
 
                 <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Enter senior citizen information</h4>
-                    <form method="post" action="/addSenior" class="needs-validation">
+                    <h4 class="mb-3">Edit senior citizen information</h4>
+                    <form method="post" action="/editSenior/{{ $senior->id }}" class="needs-validation">
+                        @method('PATCH')
                         @csrf
                         <div class="row g-3">
                             <div class="col-8">
                                 <label for="senior_name" class="form-label">Full name</label>
-                                <input type="text" name="senior_name" class="form-control" id="fullname" placeholder="Firstname Lastname" required>
+                                <input type="text" name="senior_name" class="form-control" id="fullname" value="{{ $senior->senior_name }}" required>
                                 <div class="invalid-feedback">
                                     Valid full name is required.
                                 </div>
@@ -39,16 +40,16 @@
                             <div class="col-8">
                                 <label for="phone" class="form-label">Phone number</label>
                                 <div class="input-group has-validation">
-                                    <input type="tel" name="senior_phone" class="form-control" id="phone" placeholder="0123456789" required>
-                                <div class="invalid-feedback">
-                                    A phone number is required.
+                                    <input type="tel" name="senior_phone" class="form-control" id="phone" value="{{ $senior->senior_phone }}" required>
+                                    <div class="invalid-feedback">
+                                        A phone number is required.
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-8">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" name="senior_address" class="form-control" id="address" placeholder="1234 Main St" required>
+                                <input type="text" name="senior_address" class="form-control" id="address" value="{{ $senior->senior_address }}" required>
                                 <div class="invalid-feedback">
                                     Please enter the senior citizen's address.
                                 </div>
@@ -56,7 +57,7 @@
 
                             <div class="col-6">
                                 <label for="birthdate" class="form-label">Date of birth</label>
-                                <input type="date" name="senior_birthdate" class="form-control" id="birthdate" required>
+                                <input type="date" name="senior_birthdate" class="form-control" id="birthdate" value="{{ $senior->senior_birthdate }}" required>
                                 <div class="invalid-feedback">
                                     Please enter the senior citizen's birthdate.
                                 </div>
@@ -67,12 +68,12 @@
                                 <div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label" for="male" >
-                                            <input id="male" value="Male" name="senior_gender" type="radio" class="form-check-input" checked required>Male
+                                            <input id="male" value="Male" name="senior_gender" type="radio" class="form-check-input" {{ $senior->senior_gender == 'Male' ? 'checked' : ''}} required>Male
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label" for="female">
-                                            <input id="female" value="Female" name="senior_gender" type="radio" class="form-check-input" required>Female
+                                            <input id="female" value="Female" name="senior_gender" type="radio" class="form-check-input" {{ $senior->senior_gender == 'Female' ? 'checked' : ''}} required>Female
                                         </label>
                                     </div>
                                 </div>

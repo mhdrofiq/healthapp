@@ -42,15 +42,11 @@
                                 <td>{{ $senior->senior_name }}</td>
                                 <td>{{ $senior->senior_phone }}</td>
                                 <td>{{ $senior->senior_address }}</td>
-                                @if ($senior->senior_gender == 'm')
-                                    <td>Male</td>
-                                @else
-                                    <td>Female</td>
-                                @endif
+                                <td>{{ $senior->senior_gender }}</td>
                                 <td>{{ $senior->senior_birthdate }}</td>
-                                <td class="d-flex">
+                                <td class="d-inline-flex">
                                     <form class="px-1">
-                                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                        <a href="/editSenior/{{$senior->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                                     </form>
                                     <form method="post" action="/deleteSenior/{{ $senior->id }}">
                                         @method('delete')

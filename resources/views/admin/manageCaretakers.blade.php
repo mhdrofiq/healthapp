@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">List of Caretakers</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <button type="button" class="btn btn-sm btn-success">
+                        <button type="button" class="btn btn-sm btn-success" onclick="location.href='{{ url('addCaretaker') }}'">
                             <i class="fa fa-plus"></i> Add a new caretaker
                         </button>
                     </div>
@@ -44,15 +44,11 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->address }}</td>
-                                @if ($user->gender == 'm')
-                                    <td>Male</td>
-                                @else
-                                    <td>Female</td>
-                                @endif
+                                <td>{{ $user->gender }}</td>
                                 <td>{{ $user->birthdate }}</td>
                                 <td class="d-flex">
                                     <form class="px-1">
-                                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                        <a href="/editCaretaker/{{$user->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                                     </form>
                                     <form method="post" action="/deleteCaretaker/{{ $user->id }}">
                                         @method('delete')

@@ -64,8 +64,8 @@ Route::middleware('auth')->group(function(){
 
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
-Route::get('addsenior', [RegisterController::class, 'createsenior']);
-Route::post('addsenior', [RegisterController::class, 'storesenior']);
+// Route::get('addsenior', [RegisterController::class, 'createsenior']);
+// Route::post('addsenior', [RegisterController::class, 'storesenior']);
 
 Route::get('record', [RecordController::class, 'heartRate']);
 
@@ -85,8 +85,10 @@ Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middl
 Route::post('updateProfile', [UserController::class, 'updateProfile']);
 Route::get('changePassword', [UserController::class, 'changePasswordView']);
 Route::post('changePassword', [UserController::class, 'changePassword']);
-Route::get('editCaretaker', [UserController::class, 'edit'])->middleware('auth:admin'); //TBA
-Route::patch('editCaretaker/{user}', [UserController::class, 'update'])->middleware('auth:admin'); //TBA
+Route::get('addCaretaker', [UserController::class, 'adminCreate'])->middleware('auth:admin');
+Route::post('addCaretaker', [UserController::class, 'store'])->middleware('auth:admin');
+Route::get('editCaretaker/{user}', [UserController::class, 'edit'])->middleware('auth:admin');
+Route::patch('editCaretaker/{user}', [UserController::class, 'update'])->middleware('auth:admin');
 Route::delete('deleteCaretaker/{user}', [UserController::class, 'destroyUser'])->middleware('auth:admin');
 
 // Route::get('record', [SeniorController::class, 'recordView']);
@@ -94,8 +96,8 @@ Route::delete('deleteCaretaker/{user}', [UserController::class, 'destroyUser'])-
 // Route::get('abnormal', [SeniorController::class, 'abnormalView']);
 Route::get('addSenior', [SeniorController::class, 'create'])->middleware('auth:admin');
 Route::post('addSenior', [SeniorController::class, 'store'])->middleware('auth:admin');
-Route::post('editSenior/{senior}', [SeniorController::class, 'edit'])->middleware('auth:admin'); //TBA
-Route::patch('editSenior/{senior}', [SeniorController::class, 'update'])->middleware('auth:admin'); //TBA
+Route::get('editSenior/{senior}', [SeniorController::class, 'edit'])->middleware('auth:admin');
+Route::patch('editSenior/{senior}', [SeniorController::class, 'update'])->middleware('auth:admin');
 Route::delete('deleteSenior/{senior}', [SeniorController::class, 'destroy'])->middleware('auth:admin');
 
 //guest means if user is already logged in, guest will prevent them from accessing login again until they've logged out
@@ -107,6 +109,9 @@ Route::get('adminHome', [AdminController::class, 'homeView']);
 Route::get('manageCaretakers', [AdminController::class, 'manageCaretakersView']);
 Route::get('manageSeniors', [AdminController::class, 'manageSeniorsView']);
 Route::get('manageDevices', [AdminController::class, 'manageDevicesView']);
+Route::get('assign', [AdminController::class, 'assignView']);
+Route::post('assignDevice', [AdminController::class, 'assignDevice']);
+Route::post('assignSenior', [AdminController::class, 'assignSenior']);
 
 Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:admin');
 Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');
