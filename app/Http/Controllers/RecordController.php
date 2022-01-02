@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Heartrate;
 use App\Models\senior;
 
+
 class RecordController extends Controller
 {
-    public function heartRate()
+    public function index($id)
     {
-        $heartRate = Heartrate::where('senior_id', Auth::id())->orderBy('recordtime_hr')->get(); 
-        $seniorName = senior::where('user_id', Auth::id())->first();
+        $senior = senior::where('id', $id)->first();
+        $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
+        
         $bpm = [];
         $recordTime = [];
 
@@ -20,10 +22,10 @@ class RecordController extends Controller
             $recordTime[] = $heartRates->recordtime_hr;
         }
 
-        return view("record", [
+        return view('record', [
             "yValues" => json_encode($bpm),
             "xValues" => json_encode($recordTime),
-            "seniorName" => json_encode($seniorName->senior_name),
+            "senior" => $senior
         ]);
     }
 }
