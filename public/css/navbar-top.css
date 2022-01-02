@@ -1,5 +1,19 @@
 /* Show it's not fixed to the top */
 body {
     min-height: 75rem;
-  }
-  
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #212529;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    display: block;
+    text-align: left;
+}
+
+.scroll-to-section:hover .dropdown-content {
+    display: block;
+}

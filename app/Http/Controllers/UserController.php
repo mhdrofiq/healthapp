@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Senior;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 use function Ramsey\Uuid\v6;
@@ -120,5 +123,19 @@ class UserController extends Controller
         Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
         $user->delete();
         return back();
+    }
+
+    public function seniorList()
+    {
+        $seniorList = Senior::where('user_id', Auth::id())->get();
+
+        foreach ($seniorList as $seniorLists) {
+            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+        }
+
+        return view("seniorList", [
+            "seniorList" => $seniorList,
+            "seniorAge" => $age,
+        ]);
     }
 }

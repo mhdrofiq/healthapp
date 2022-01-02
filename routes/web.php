@@ -3,6 +3,7 @@
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecordController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
@@ -24,6 +25,8 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/profile', function () {
     return view('profile', [
@@ -47,7 +50,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/changePassword', function() {
+Route::get('/changePassword', function () {
     return view('changePassword');
 });
 
@@ -58,7 +61,7 @@ Route::get('/template', function () {
 Route::get('/', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::post('logout', LogoutController::class)->name('logout');
 });
 
@@ -67,8 +70,7 @@ Route::post('register', [RegisterController::class, 'store']);
 // Route::get('addsenior', [RegisterController::class, 'createsenior']);
 // Route::post('addsenior', [RegisterController::class, 'storesenior']);
 
-Route::get('record', [RecordController::class, 'heartRate']);
-
+Route::get('/record/{id}', [RecordController::class, 'index']);
 //Route::get('abnormality', [abnormalController::class, 'checkData']);
 
 // PLANNED FORMAT CORRECTIONS OF EXISTING AND FUTURE ROUTES
@@ -81,10 +83,10 @@ Route::get('record', [RecordController::class, 'heartRate']);
 // Route::post('register', [UserController::class, 'store']);
 // Route::get('profile', [UserController::class, 'profile']);
 // Route::get('seniorsList', [UserController::class, 'seniorsListView']);
-Route::get('updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
-Route::post('updateProfile', [UserController::class, 'updateProfile']);
-Route::get('changePassword', [UserController::class, 'changePasswordView']);
-Route::post('changePassword', [UserController::class, 'changePassword']);
+Route::get('/updateProfile', [UserController::class, 'updateProfileView'])->middleware('auth');
+Route::post('/updateProfile', [UserController::class, 'updateProfile']);
+Route::get('/changePassword', [UserController::class, 'changePasswordView']);
+Route::post('/changePassword', [UserController::class, 'changePassword']);
 Route::get('addCaretaker', [UserController::class, 'adminCreate'])->middleware('auth:admin');
 Route::post('addCaretaker', [UserController::class, 'store'])->middleware('auth:admin');
 Route::get('editCaretaker/{user}', [UserController::class, 'edit'])->middleware('auth:admin');
@@ -102,8 +104,8 @@ Route::delete('deleteSenior/{senior}', [SeniorController::class, 'destroy'])->mi
 
 //guest means if user is already logged in, guest will prevent them from accessing login again until they've logged out
 //auth means the user cannot log out unless they've already been authenticated (logged in)
-Route::get('adminLogin', [AdminController::class, 'create'])->middleware('guest'); 
-Route::post('adminLogin', [AdminController::class, 'store'])->middleware('guest'); 
+Route::get('adminLogin', [AdminController::class, 'create'])->middleware('guest');
+Route::post('adminLogin', [AdminController::class, 'store'])->middleware('guest');
 Route::get('adminLogout', [AdminController::class, 'destroy'])->middleware('auth:admin');
 Route::get('adminHome', [AdminController::class, 'homeView']);
 Route::get('manageCaretakers', [AdminController::class, 'manageCaretakersView']);
@@ -115,3 +117,5 @@ Route::post('assignSenior', [AdminController::class, 'assignSenior']);
 
 Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:admin');
 Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');
+
+Route::get('/seniorList', [UserController::class, 'seniorList']);
