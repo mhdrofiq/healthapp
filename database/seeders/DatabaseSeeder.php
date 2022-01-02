@@ -39,29 +39,30 @@ class DatabaseSeeder extends Seeder
         //seed users (caretakers)
         
         $user1 = User::factory()->create([
+            'name' => 'testuser',
             'email' => 'test@example.com',
             'password' => bcrypt('testpass'),
-            'gender' => 'm',
+            'gender' => 'Male',
         ]);
         $user2 = User::factory()->create([
-            'gender' => 'm',
+            'gender' => 'Male',
         ]);
         $user3 = User::factory()->create([
-            'gender' => 'f',
+            'gender' => 'Female',
         ]);
 
         //seed seniors
 
         $senior1 = Senior::factory()->create([
-            'senior_gender' => 'm',
+            'senior_gender' => 'Male',
             'user_id' => $user1->id
         ]);
         $senior2 = Senior::factory()->create([
-            'senior_gender' => 'f',
+            'senior_gender' => 'Female',
             'user_id' => $user2->id
         ]);
         $senior3 = Senior::factory()->create([
-            'senior_gender' => 'f',
+            'senior_gender' => 'Female',
             'user_id' => $user3->id
         ]);
 

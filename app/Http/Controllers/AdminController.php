@@ -36,9 +36,43 @@ class AdminController extends Controller
 
     public function manageDevicesView()
     {
-        return view('admin.manageDevices',[
+        return view('admin.manageDevices', [
             'devices' => Device::all(),
         ]);
+    }
+
+    public function assignView()
+    {
+        return view('admin.assign', [
+            'devices' => Device::doesntHave('senior')->get(),
+            'seniorsToDevice' => Senior::doesntHave('device')->get(),
+            'seniorsToUser' => Senior::doesntHave('user')->get(),
+            'users' => User::all(),
+        ]);
+    }
+
+    public function assignDevice()
+    {
+        $device_id = request()->input('selected_device');
+        $senior_id = request()->input('selected_senior');
+
+        $device = Device::find($device_id);
+        $device->senior_id = $senior_id;
+        $device->save();
+
+        return redirect('adminHome');
+    }
+
+    public function assignSenior()
+    {
+        $senior_id = request()->input('selected_senior');
+        $user_id = request()->input('selected_user');
+
+        $senior = Senior::find($senior_id);
+        $senior->user_id = $user_id;
+        $senior->save();
+
+        return redirect('adminHome');
     }
 
     public function create()
