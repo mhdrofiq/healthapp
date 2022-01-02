@@ -67,12 +67,40 @@ class UserController extends Controller
             return redirect('changePassword')->with('wrongPassword', 'Wrong Password !');
     }
 
+    public function create()
+    {
+        return view('testlogin');
+    }
+
+    public function store()
+    {
+        $credentials = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        //ddd($attributes);
+
+        if(auth()->attempt($credentials))
+        {
+            //redirect with a success flash message
+            ddd('GOOD LOGIN');
+            // return redirect('home')->with('success', 'Welcome Back!');
+        }
+        //if the auth failed
+        throw ValidationException::withMessages([
+            ddd('FAILED LOGIN')
+            // 'errormsg' => 'Your email or password is invalid'
+        ]);
+
+    }
+
     public function adminCreate()
     {
         return view('admin.newCaretakerForm');
     }
 
-    public function store()
+    public function adminStore()
     {
         $attributes = request()->validate([
             'name' => 'required',
@@ -118,11 +146,19 @@ class UserController extends Controller
         return redirect('manageCaretakers');
     }
 
+    //to delete a caretaker record from the admin side
     public function destroyUser(User $user)
     {
         Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
         $user->delete();
         return back();
+    }
+
+    public function destroy()
+    {
+        //ddd('this is destroy');
+        auth()->logout();
+        return redirect('/')->with('success', 'See you again!');
     }
 
     public function seniorList()

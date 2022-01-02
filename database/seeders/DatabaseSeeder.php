@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         //seed users (caretakers)
         
         $user1 = User::factory()->create([
+            'name' => 'testuser',
             'email' => 'test@example.com',
             'password' => bcrypt('testpass'),
             'gender' => 'Male',

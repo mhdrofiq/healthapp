@@ -77,7 +77,7 @@ Route::get('/record/{id}', [RecordController::class, 'index']);
 //=========================================================
 // Route::get('/', [UserController::class, 'create'])->middleware('guest');
 // Route::post('login', [UserController::class, 'store'])->middleware('guest');
-// Route::post('logout', [UserController::class, 'destroy'])->middleware('auth');
+// Route::get('logout', [UserController::class, 'destroy'])->middleware('auth');
 // Route::get('home', [UserController::class, 'home']);
 // Route::get('register', [UserController::class, 'create']);
 // Route::post('register', [UserController::class, 'store']);
@@ -88,7 +88,7 @@ Route::post('/updateProfile', [UserController::class, 'updateProfile']);
 Route::get('/changePassword', [UserController::class, 'changePasswordView']);
 Route::post('/changePassword', [UserController::class, 'changePassword']);
 Route::get('addCaretaker', [UserController::class, 'adminCreate'])->middleware('auth:admin');
-Route::post('addCaretaker', [UserController::class, 'store'])->middleware('auth:admin');
+Route::post('addCaretaker', [UserController::class, 'adminStore'])->middleware('auth:admin');
 Route::get('editCaretaker/{user}', [UserController::class, 'edit'])->middleware('auth:admin');
 Route::patch('editCaretaker/{user}', [UserController::class, 'update'])->middleware('auth:admin');
 Route::delete('deleteCaretaker/{user}', [UserController::class, 'destroyUser'])->middleware('auth:admin');
