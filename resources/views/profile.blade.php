@@ -123,7 +123,7 @@
             
         </form>
     </div>
-    <h2 style="margin-left: 40%; color:white">Senior Citizen List: </h2>
+    <h2 style="margin-left: 40%; color:white">Senior Citizen </h2>
     <div class="container emp-profile">
         <form method="post">
 
