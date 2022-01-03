@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\abnormalController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SeniorController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,27 +20,9 @@ use App\Http\Controllers\DeviceController;
 |
 */
 
-Route::get('/evaluate', function () {
-    return view('evaluate');
-});
-
-Route::get('/abnormal', function () {
-    return view('abnormal');
-});
-
-Route::get('/normal', function () {
-    return view('normal');
-});
-
-Route::get('/changePassword', function () {
-    return view('changePassword');
-});
-
 Route::get('/template', function () {   //this is an empty page for testing wip stuff
     return view('template');
 });
-
-//Route::get('abnormality', [abnormalController::class, 'checkData']);
 
 
 // AUTHENTICATION ROUTES
@@ -77,8 +57,8 @@ Route::post('addSenior', [SeniorController::class, 'store'])->middleware('auth:a
 Route::get('editSenior/{senior}', [SeniorController::class, 'edit'])->middleware('auth:admin');
 Route::patch('editSenior/{senior}', [SeniorController::class, 'update'])->middleware('auth:admin');
 Route::delete('deleteSenior/{senior}', [SeniorController::class, 'destroy'])->middleware('auth:admin');
-// Route::get('record', [SeniorController::class, 'recordView']);
-// Route::get('evaluate', [SeniorController::class, 'evaluateView']);
+Route::get('/record/{id}', [SeniorController::class, 'index']);
+Route::get('evaluate', [SeniorController::class, 'evaluateView']);
 // Route::get('abnormal', [SeniorController::class, 'abnormalView']);
 
 
@@ -102,8 +82,3 @@ Route::post('assignSenior', [AdminController::class, 'assignSenior']);
 //==================================================================================================
 Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:admin');
 Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');
-
-
-// 
-//==================================================================================================
-Route::get('/record/{id}', [RecordController::class, 'index']);
