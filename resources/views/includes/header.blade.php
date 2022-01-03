@@ -48,7 +48,7 @@
             <a class="nav-link" href="{{url('abnormal')}}">Abnormalities</a>
           </li>
           <li class="nav-item">
-            <form method="POST" action="{{route('logout')}}">
+            <form method="get" action="/logout">
               @csrf
               <button class="nav-link dropdown-item" type="submit" style="background-color: transparent;">Logout</button>
             </form>

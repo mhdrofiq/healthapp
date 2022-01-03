@@ -24,6 +24,20 @@ class UserController extends Controller
      * @return \Illuminate\View\View
      */
 
+    // USER SIDE FUNCTIONS
+    //===============================================//
+    public function profileView()
+    {
+        return view('profile', [
+            'user' => User::first()
+        ]);
+    }
+
+    public function homeView()
+    {
+        return view('home');
+    }
+
     public function updateProfileView()
     {
         $data = User::all();
@@ -50,7 +64,6 @@ class UserController extends Controller
         return view('changePassword');
     }
 
-
     public function changePassword(Request $request)
     {
         $user = User::find($request->id);
@@ -67,34 +80,23 @@ class UserController extends Controller
             return redirect('changePassword')->with('wrongPassword', 'Wrong Password !');
     }
 
-    public function create()
+    public function seniorList()
     {
-        return view('testlogin');
-    }
+        $seniorList = Senior::where('user_id', Auth::id())->get();
 
-    public function store()
-    {
-        $credentials = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        //ddd($attributes);
-
-        if(auth()->attempt($credentials))
-        {
-            //redirect with a success flash message
-            ddd('GOOD LOGIN');
-            // return redirect('home')->with('success', 'Welcome Back!');
+        foreach ($seniorList as $seniorLists) {
+            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
         }
-        //if the auth failed
-        throw ValidationException::withMessages([
-            ddd('FAILED LOGIN')
-            // 'errormsg' => 'Your email or password is invalid'
+
+        return view("seniorList", [
+            "seniorList" => $seniorList,
+            "seniorAge" => $age,
         ]);
-
     }
+    
 
+    // ADMIN SIDE FUNCTIONS
+    //===============================================//
     public function adminCreate()
     {
         return view('admin.newCaretakerForm');
@@ -146,32 +148,10 @@ class UserController extends Controller
         return redirect('manageCaretakers');
     }
 
-    //to delete a caretaker record from the admin side
-    public function destroyUser(User $user)
+    public function adminDestroy(User $user)
     {
         Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
         $user->delete();
         return back();
-    }
-
-    public function destroy()
-    {
-        //ddd('this is destroy');
-        auth()->logout();
-        return redirect('/')->with('success', 'See you again!');
-    }
-
-    public function seniorList()
-    {
-        $seniorList = Senior::where('user_id', Auth::id())->get();
-
-        foreach ($seniorList as $seniorLists) {
-            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
-        }
-
-        return view("seniorList", [
-            "seniorList" => $seniorList,
-            "seniorAge" => $age,
-        ]);
     }
 }
