@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Heartrate;
 use App\Models\senior;
-
+use App\Models\SensorData;
 
 class RecordController extends Controller
 {
     public function index($id)
     {
         $senior = senior::where('id', $id)->first();
-        $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
+        $heartRate = SensorData::where('device_id', $id)->orderBy('record_time')->get();
         
         $bpm = [];
         $recordTime = [];
 
         foreach($heartRate as $heartRates){
-            $bpm[] = $heartRates->bpm;
-            $recordTime[] = $heartRates->recordtime_hr;
+            $bpm[] = $heartRates->heartrate;
+            $recordTime[] = $heartRates->record_time;
         }
 
         return view('record', [
