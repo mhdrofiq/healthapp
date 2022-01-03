@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Senior;
+use App\Models\Heartrate;
 
 class SeniorController extends Controller
 {
     public function create()
     {
         return view('admin.newSeniorForm');
+    }
+
+    public function evaluateView()
+    {
+        return view('evaluate');
     }
 
     public function store()
@@ -61,5 +67,25 @@ class SeniorController extends Controller
     {
         $senior->delete();
         return back();
+    }
+
+    public function index($id)
+    {
+        $senior = senior::where('id', $id)->first();
+        $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
+        
+        $bpm = [];
+        $recordTime = [];
+
+        foreach($heartRate as $heartRates){
+            $bpm[] = $heartRates->bpm;
+            $recordTime[] = $heartRates->recordtime_hr;
+        }
+
+        return view('record', [
+            "yValues" => json_encode($bpm),
+            "xValues" => json_encode($recordTime),
+            "senior" => $senior
+        ]);
     }
 }
