@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemperaturesTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTemperaturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('temperatures', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('senior_id')->nullable();
-            $table->integer('temperature');
-            $table->timestamp('recordtime_tm');
             $table->timestamps();
+            $table->string('username');
+            $table->string('password');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTemperaturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temperatures');
+        Schema::dropIfExists('admins');
     }
 }

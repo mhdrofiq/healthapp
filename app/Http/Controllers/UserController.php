@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Senior;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 use function Ramsey\Uuid\v6;
 
@@ -20,6 +23,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\View\View
      */
+
+    // USER SIDE FUNCTIONS
+    //===============================================//
+    public function profileView()
+    {
+        return view('profile', [
+            'user' => User::first()
+        ]);
+    }
+
+    public function homeView()
+    {
+        return view('home');
+    }
 
     public function updateProfileView()
     {
@@ -47,7 +64,6 @@ class UserController extends Controller
         return view('changePassword');
     }
 
-
     public function changePassword(Request $request)
     {
         $user = User::find($request->id);
@@ -62,5 +78,80 @@ class UserController extends Controller
                 return redirect('changePassword')->with('differentNewPassword', 'Confirm new password must be the same as new password !');
         } else
             return redirect('changePassword')->with('wrongPassword', 'Wrong Password !');
+    }
+
+    public function seniorList()
+    {
+        $seniorList = Senior::where('user_id', Auth::id())->get();
+
+        foreach ($seniorList as $seniorLists) {
+            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+        }
+
+        return view("seniorList", [
+            "seniorList" => $seniorList,
+            "seniorAge" => $age,
+        ]);
+    }
+    
+
+    // ADMIN SIDE FUNCTIONS
+    //===============================================//
+    public function adminCreate()
+    {
+        return view('admin.newCaretakerForm');
+    }
+
+    public function adminStore()
+    {
+        $attributes = request()->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'address' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+        ]);
+
+        if(User::create($attributes))
+        {
+            //redirect with a success flash message
+            return redirect('manageCaretakers');
+        }
+        //if failed
+        throw ValidationException::withMessages([
+            'errormsg' => 'invalid input, try again'
+        ]);
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.editCaretaker', [
+            'user' => $user,
+        ]);
+    }
+
+    public function update(User $user)
+    {
+        $attributes = request()->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+        ]);
+        
+        $user->update($attributes);
+
+        return redirect('manageCaretakers');
+    }
+
+    public function adminDestroy(User $user)
+    {
+        Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
+        $user->delete();
+        return back();
     }
 }

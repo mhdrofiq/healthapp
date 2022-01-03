@@ -37,7 +37,7 @@
                         <h4 class="my-0 fw-normal text-white">Temperature</h4>
                       </div>
                       <div class="card-body">
-                        <h1 class="card-title">39&#8451;</h1>
+                        <h1 class="card-title">{{ $abrtemp }}&#8451;</h1>
                       </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ class CreateHeartratesTable extends Migration
     {
         Schema::create('heartrates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('senior_id');
+            $table->foreignId('senior_id')->nullable();
             $table->integer('bpm');
             $table->timestamp('recordtime_hr');
             $table->timestamps();
