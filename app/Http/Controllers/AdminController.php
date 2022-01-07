@@ -75,6 +75,51 @@ class AdminController extends Controller
         return redirect('adminHome');
     }
 
+    public function editAssignment(Device $device)
+    {
+        return view('admin.editAssignment', [
+            'seniorsToDevice' => Senior::doesntHave('device')->get(),
+            'users' => User::all(),
+            'selectedDevice' => $device,
+        ]);
+    }
+
+    public function updateDeviceAssign(Device $device)
+    {
+        $newsenior = request()->input('new_senior');
+
+        $d = Device::find($device->id);
+        $d->senior_id = $newsenior;
+        $d->save();
+
+        if($d->senior_id != NULL)
+        {
+            return back();
+        }
+        else
+        {
+            return redirect('adminHome');
+        }
+    }
+
+    public function updateSeniorAssign(Senior $senior)
+    {
+        $newcaretaker = request()->input('new_caretaker');
+        
+        $s = Senior::find($senior->id);
+        $s->user_id = $newcaretaker;
+        $s->save();
+
+        if($s->user_id != NULL)
+        {
+            return back();
+        }
+        else
+        {
+            return redirect('adminHome');
+        }
+    }
+
     public function create()
     {
         return view('admin.adminLogin');

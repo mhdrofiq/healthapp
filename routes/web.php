@@ -76,6 +76,9 @@ Route::get('manageDevices', [AdminController::class, 'manageDevicesView']);
 Route::get('assign', [AdminController::class, 'assignView']);
 Route::post('assignDevice', [AdminController::class, 'assignDevice']);
 Route::post('assignSenior', [AdminController::class, 'assignSenior']);
+Route::get('editAssignment/{device}', [AdminController::class, 'editAssignment']);
+Route::patch('editDeviceAssign/{device}', [AdminController::class, 'updateDeviceAssign']);
+Route::patch('editSeniorAssign/{senior}', [AdminController::class, 'updateSeniorAssign']);
 
 
 // DEVICE ROUTES
