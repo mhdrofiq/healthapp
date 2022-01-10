@@ -18,7 +18,7 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
 
         <main>
-            <h1 class="text-white"><b>{{ Auth::user()->senior->senior_name }}'s Health Evaluation</b></h1>
+            <h1 class="text-white"><b>s Health Evaluation</b></h1>
 
             <p class="text-white">Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem
                 tempor mollit. In est laboris laboris deserunt ullamco ea cillum deserunt
@@ -42,11 +42,11 @@
                             <td>10:00</td>
                             <td>{{ Auth::user()->temperature}}</td>
                             <td>
-                            @if ((Auth::user()->senior->temperature) < 33)
+                            @if ((Auth::user()->temperature) < 33)
                                 Low Temperature
-                                @elseif ((Auth::user()->senior->temperature) == 35)
+                                @elseif ((Auth::user()->temperature) == 35)
                                 Normal Temperature
-                                @else ((Auth::user()->senior->temperature_id) > 37)
+                                @else ((Auth::user()->temperature) > 37)
                                 High Temperature
                             @endif
                             </td>
@@ -55,11 +55,11 @@
                             <td>10/10/21</td>
                             <td>10:30</td>
                             <td>34</td>
-                            <td>@if ((Auth::user()->senior->temperature_id) < 33)
+                            <td>@if ((Auth::user()->temperature) < 33)
                                 Low Temperature
-                                @elseif ((Auth::user()->senior->temperature_id) == 35)
+                                @elseif ((Auth::user()->temperature) == 35)
                                 Normal Temperature
-                                @else ((Auth::user()->senior->temperature_id) > 37)
+                                @else ((Auth::user()->temperature) > 37)
                                 High Temperature
                             @endif</td>
                         </tr>
@@ -129,7 +129,13 @@
                             <td>10/10/21</td>
                             <td>10:00</td>
                             <td>74</td>
-                            <td>Normal Heart Rate</td>
+                            <td>>@if (($heartrate->bpm) < 33)
+                                Low Heart Rate
+                                @elseif (($heartrate->bpm) == 35)
+                                Normal Heart Rate
+                                @else (($heartrate->bpm) > 37)
+                                High Heart Rate
+                            @endif</td>
                         </tr>
                         <tr>
                             <td>10/10/21</td>
