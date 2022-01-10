@@ -15,10 +15,10 @@ class CreateSeniorsTable extends Migration
     {
         Schema::create('seniors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('senior_name');
             $table->string('senior_phone');
-            $table->char('senior_gender');
+            $table->string('senior_gender');
             $table->text('senior_address');
             $table->date('senior_birthdate');
             $table->timestamps();

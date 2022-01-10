@@ -11,27 +11,31 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function create(){
+    //to login a caretaker
+    public function create()
+    {
         return view('login');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+    //to login a caretaker
+    public function store()
+    {
+        $credentials = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        $user = User::whereEmail($request->email)->first();
+        //ddd($attributes);
 
-        if($user){
-            if(Hash::check($request->password, $user->password)){
-                Auth::login($user);
+        if(auth()->attempt($credentials))
+        {
+            //redirect with a success flash message
+            return redirect('home')->with('success', 'Welcome Back!');
+        }
+        //if the auth failed
+        throw ValidationException::withMessages([
+            'errormsg' => 'Your email or password is invalid'
+        ]);
 
-                return redirect('home')->with('success', 'Login Successfully');
-            }
-        }
-        else{
-            return back()->with('error', 'Login failed');
-        }
     }
 }

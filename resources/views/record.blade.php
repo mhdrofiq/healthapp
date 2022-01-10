@@ -6,6 +6,7 @@
     <title>Data Record</title>
     <!-- Custom styles for this template -->
     <link href="{{asset('/css/data-record.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/profile.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -13,19 +14,20 @@
     <header class="row">
         @include('includes.header')
     </header>
+    <style>
+        .information {
+            margin-left: 35%;
+        }
+    </style>
+
 
     <div class="col-lg-8 mx-auto p-3 py-md-5">
 
         <main>
-            <h1 class="text-white">{{ Auth::user()->senior->senior_name }}'s Data Record</h1>
-            <p class="text-white">Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem
-                tempor mollit. In est laboris laboris deserunt ullamco ea cillum deserunt
-                tempor. Culpa exercitation consectetur et est minim reprehenderit proident.
-                Mollit occaecat deserunt minim commodo laboris aliqua aliqua occaecat anim
-                ipsum magna irure enim.</p>
+            <h1 class="text-white" style="text-align: center;">Data Record</h1><br>
+            <p class="text-white" style="text-align: center;">Below is data record of <b>{{ $senior->senior_name }}</b></p>
             <hr class="text-white"><br>
 
-            
             <div class="container emp-profile">
                 <h2>Temperature Record</h2>
                 <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna.
@@ -79,7 +81,7 @@
 
             <div class="container emp-profile">
                 <h2>Heart Rate Record</h2>
-                <p style="text-align: center;">Monitored <b><?php echo $seniorName ?></b> Heart Rate Record.</p>
+                <p style="text-align: center;">Monitored <b>{{ $senior->senior_name }}</b> Heart Rate Record.</p>
                 <div>
                     <canvas id="heartChart" width="800" height="200"></canvas>
                 </div>

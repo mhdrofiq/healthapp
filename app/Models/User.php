@@ -52,6 +52,6 @@ class User extends Authenticatable
 
     public function senior()
     {
-        return $this->hasOne(Senior::class);
+        return $this->hasMany(Senior::class);
     }
 }

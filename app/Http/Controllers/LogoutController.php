@@ -14,9 +14,12 @@ class LogoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    
+    //to log out the caretaker
+    public function destroy()
     {
-        Auth::logout();
-        return redirect('/');
+        //ddd('this is destroy');
+        auth()->logout();
+        return redirect('/')->with('success', 'See you again!');
     }
 }

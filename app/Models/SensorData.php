@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Temperature extends Model
+class SensorData extends Model
 {
     use HasFactory;
 
-    public function senior()
+    protected $guarded = [];
+
+    public function device()
     {
-        return $this->belongsTo(Senior::class);
+        return $this->belongsTo(Device::class);
     }
 }
