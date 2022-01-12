@@ -69,23 +69,23 @@ class SeniorController extends Controller
         return back();
     }
 
-    public function index($id)
-    {
-        $senior = senior::where('id', $id)->first();
-        $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
+    // public function index($id)
+    // {
+    //     $senior = senior::where('id', $id)->first();
+    //     $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
         
-        $bpm = [];
-        $recordTime = [];
+    //     $bpm = [];
+    //     $recordTime = [];
 
-        foreach($heartRate as $heartRates){
-            $bpm[] = $heartRates->bpm;
-            $recordTime[] = $heartRates->recordtime_hr;
-        }
+    //     foreach($heartRate as $heartRates){
+    //         $bpm[] = $heartRates->bpm;
+    //         $recordTime[] = $heartRates->recordtime_hr;
+    //     }
 
-        return view('record', [
-            "yValues" => json_encode($bpm),
-            "xValues" => json_encode($recordTime),
-            "senior" => $senior
-        ]);
-    }
+    //     return view('record', [
+    //         "yValues" => json_encode($bpm),
+    //         "xValues" => json_encode($recordTime),
+    //         "senior" => $senior
+    //     ]);
+    // }
 }
