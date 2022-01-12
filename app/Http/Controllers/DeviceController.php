@@ -19,4 +19,22 @@ class DeviceController extends Controller
         $device->delete();
         return back();
     }
+
+    //public function getSensorData(Device $device)
+    public function getSensorData()
+    {
+        include('dbcon.php');
+
+        //$key = $device->id
+        $key = 0;
+        $reference = $database->getReference('/devices')->getChild($key);
+        $records = $reference->getValue();
+
+        //ddd($records);
+
+        return view('template', [
+            'records' => $records,
+
+        ]);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SeniorController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\FirebaseController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 
@@ -31,7 +32,7 @@ Route::get('/', [LoginController::class, 'create'])->middleware('guest');
 Route::post('login', [LoginController::class, 'store'])->middleware('guest');
 Route::get('logout', [LogoutController::class, 'destroy'])->middleware('auth');
 Route::get('home', [UserController::class, 'homeView']);
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
 
 
@@ -76,9 +77,16 @@ Route::get('manageDevices', [AdminController::class, 'manageDevicesView']);
 Route::get('assign', [AdminController::class, 'assignView']);
 Route::post('assignDevice', [AdminController::class, 'assignDevice']);
 Route::post('assignSenior', [AdminController::class, 'assignSenior']);
+Route::get('editAssignment/{device}', [AdminController::class, 'editAssignment']);
+Route::patch('editDeviceAssign/{device}', [AdminController::class, 'updateDeviceAssign']);
+Route::patch('editSeniorAssign/{senior}', [AdminController::class, 'updateSeniorAssign']);
 
 
 // DEVICE ROUTES
 //==================================================================================================
 Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:admin');
 Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');
+//Route::get('getSensorData/{device}', [DeviceController::class, 'getSensorData']);
+Route::get('getSensorData', [DeviceController::class, 'getSensorData']);
+
+Route::get('firebasesdk', [FirebaseController::class, 'index']);

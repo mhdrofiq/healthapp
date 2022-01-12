@@ -15,9 +15,4 @@ class Device extends Model
     {
         return $this->belongsTo(Senior::class);
     }
-
-    public function sensor_data()
-    {
-        return $this->hasMany(SensorData::class);
-    }
 }

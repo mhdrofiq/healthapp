@@ -9,21 +9,17 @@
 
 <body>
 
-    <header class="row">
-        @include('includes.header')
-    </header>
-
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
-            <h1>testing eloquent relationships</h1><br>
+            <h1>This is an empty page for testing code</h1><br>
+            @foreach($records as $record)
             <p>
-                {{--this is how you call attributes of a model--}}
-                {{ auth()->user()->senior->first()->senior_name }}
-                <br>
-                {{--this is how you get sensor data from an authenticated user--}}
-                {{ auth()->user()->senior->first()->device->sensor_data->first()->temperature }}
-            </p>
+                Time: {{ $record['recordtime'] }}<br>
+                Temperature: {{ $record['temperature'] }}<br>
+                Heartrate: {{ $record['ecg'] }}
+            </p><br>
+            @endforeach
         </main>
 
         <footer class="pt-5 my-5 text-muted border-top">
