@@ -11,12 +11,28 @@ class DeviceController extends Controller
     {
         $device = new Device;
         $device->save();
+
+        include('dbcon.php');
+        //firebase doesn't allow a node that should have children be created without any children
+        //so when a new device is added, set its sensor values to 0
+        $device_ref = $database->getReference('devices')->getChild($device->id)->push([
+            'recordtime' => 0,
+            'temperature' => 0,
+            'ecg' => 0,
+        ]);
+
+        //ddd($device_ref);
+
         return back();
     }
 
     public function destroy(Device $device)
     {
         $device->delete();
+
+        include('dbcon.php');
+        $database->getReference('devices')->getChild($device->id)->remove();
+
         return back();
     }
 
