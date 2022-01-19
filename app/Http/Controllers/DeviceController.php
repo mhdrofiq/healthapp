@@ -34,7 +34,6 @@ class DeviceController extends Controller
 
         return view('template', [
             'records' => $records,
-
         ]);
     }
 }
