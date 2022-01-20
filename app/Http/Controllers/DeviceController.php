@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Device;
+use App\Models\Senior;
 
 class DeviceController extends Controller
 {
@@ -52,5 +53,32 @@ class DeviceController extends Controller
             'records' => $records,
 
         ]);
+    }
+
+    public function checkForAbnormal(Senior $senior)
+    {
+        include('dbcon.php');
+        $did = $senior->device->id;
+        $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
+        $records = $reference->getValue();
+
+        foreach($records as $record)
+        {
+            if(($record['temperature'] > 37.0 || $record['temperature'] < 34) ||
+                ($record['ecg'] > 100 || $record['ecg'] < 80))
+            {
+                return view('abnormal', [
+                    'abrtemp' => $record['temperature'],
+                    'abrecg' => $record['ecg'],
+                    'abrtime' => $record['recordtime'],
+                ]);
+            }
+            else
+            {
+                return view('normal', [
+                    'senior' => $senior,
+                ]);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
-            <h1>Detected Abnormalities</h1>
+            <h1>Abrnomal Measurements Were Detected</h1>
             <p>
                 Carewear has detected an irregularity in the phisiological data of the
                 senior citizen under your care. Abnormal temperature and heart rate values
@@ -26,7 +26,7 @@
 
             <div class="card mb-4 rounded-3 shadow-sm border-danger">
                 <div class="card-body text-dark">
-                    <p class="card-title blockquote">Last measurement was taken at 03 Jun 19:30 MYT</p>
+                    <p class="card-title blockquote">Last measurement was taken at {{ $abrtime }}</p>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                             <h4 class="my-0 fw-normal text-white">Heart Rate</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">180<small class="text-muted fw-light">bpm</small></h1>
+                            <h1 class="card-title pricing-card-title">{{ $abrecg }}<small class="text-muted fw-light">bpm</small></h1>
                         </div>
                     </div>
                 </div>
