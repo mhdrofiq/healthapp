@@ -49,7 +49,7 @@ return [
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'healthapp'),
-            'username' => env('DB_USERNAME', 'healthappDB'),
+            'username' => env('DB_USER', 'healthappDB'),
             'password' => env('DB_PASSWORD', 'testpass'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
