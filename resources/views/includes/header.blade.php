@@ -8,7 +8,7 @@
   <link href="{{asset('/css/navbar-top.css')}}" rel="stylesheet">
   <?php
 
-  use App\Models\senior
+  use App\Models\senior;
   use Illuminate\Support\Facades\Auth;
 
   $seniorList = senior::where('user_id', Auth::id())->get();
