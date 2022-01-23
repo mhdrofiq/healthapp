@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\senior;
@@ -73,32 +74,24 @@ class SeniorController extends Controller
         {
             include('dbcon.php');
 
-            $key = 0;
-            $reference = $database->getReference('/devices')->getChild($key);
-            $records = $reference->getValue();
+            $senior = senior::where('id', $id)->first();
+            $device = Device::where('senior_id', $senior->id)->first();
+
+            $grandChildKey = $database->getReference('devices')->getChild($device->id)->getChildKeys();
+
+            $bpm = [];
+            $recordTime = [];
+            foreach($grandChildKey as $grandChildKeys){
+                $bpm[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/ecg')->getValue();
+                $recordTime[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/recordtime')->getValue();
+            }
     
             //ddd($records);
     
             return view('record', [
-                "records" => $records,
+                "yValues" => json_encode($bpm),
+                "xValues" => json_encode($recordTime),
+                "senior" => $senior,
             ]);
-
-
-            // $senior = senior::where('id', $id)->first();
-            // $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
-            
-            // $bpm = [];
-            // $recordTime = [];
-
-            // foreach($heartRate as $heartRates){
-            //     $bpm[] = $heartRates->bpm;
-            //     $recordTime[] = $heartRates->recordtime_hr;
-            // }
-
-            // return view('record', [
-            //     "yValues" => json_encode($bpm),
-            //     "xValues" => json_encode($recordTime),
-            //     "senior" => $senior
-            // ]);
         }
 }

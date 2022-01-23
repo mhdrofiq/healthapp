@@ -34,7 +34,7 @@
                     Tempor esse non reprehenderit officia in exercitation labore dolore
                     mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
                 <div>
-                    <canvas id="tempschart" width="800" height="200"></canvas>
+                    <canvas id="tempChart" width="800" height="200"></canvas>
                 </div>
             </div><br>
 
@@ -129,8 +129,8 @@
                 labels: xValues,
                 datasets: [{
                     fill: false,
-                    backgroundColor: "rgba(0,0,255,1.0)",
-                    borderColor: "rgba(0,0,255,0.1)",
+                    backgroundColor: "rgba(190, 37, 37,1.0)",
+                    borderColor: "rgba(190, 37, 37, 0.1)",
                     pointRadius: 5,
                     pointHoverRadius: 7,
                     data: yValues,
