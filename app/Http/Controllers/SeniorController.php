@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
-use App\Models\Senior;
+use App\Models\senior;
 use App\Models\Heartrate;
 
 class SeniorController extends Controller
@@ -29,7 +29,7 @@ class SeniorController extends Controller
             'senior_birthdate' => 'required',
         ]);
 
-        if(Senior::create($newsenior))
+        if(senior::create($newsenior))
         {
             //redirect with a success flash message
             return redirect('manageSeniors');
@@ -40,14 +40,14 @@ class SeniorController extends Controller
         ]);
     }
 
-    public function edit(Senior $senior)
+    public function edit(senior $senior)
     {
         return view('admin.editSenior', [
             'senior' => $senior,
         ]);
     }
 
-    public function update(Senior $senior)
+    public function update(senior $senior)
     {
         $attributes = request()->validate([
             'senior_name' => 'required',
@@ -63,7 +63,7 @@ class SeniorController extends Controller
 
     }
 
-    public function destroy(Senior $senior)
+    public function destroy(senior $senior)
     {
         $senior->delete();
         return back();

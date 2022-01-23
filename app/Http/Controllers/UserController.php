@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Senior;
+use App\Models\senior;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +82,7 @@ class UserController extends Controller
 
     public function seniorList()
     {
-        $seniorList = Senior::where('user_id', Auth::id())->get();
+        $seniorList = senior::where('user_id', Auth::id())->get();
 
         foreach ($seniorList as $seniorLists) {
             $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
@@ -150,7 +150,7 @@ class UserController extends Controller
 
     public function adminDestroy(User $user)
     {
-        Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
+        senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
         $user->delete();
         return back();
     }
