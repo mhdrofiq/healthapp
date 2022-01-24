@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-use function Ramsey\Uuid\v6;
-
 class UserController extends Controller
 {
     /**
@@ -29,7 +27,7 @@ class UserController extends Controller
     public function profileView()
     {
         return view('profile', [
-            'user' => User::first()
+            'user' => auth()->user(),
         ]);
     }
 

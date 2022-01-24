@@ -10,8 +10,9 @@
 
   use App\Models\Senior;
   use Illuminate\Support\Facades\Auth;
-
+  
   $seniorList = Senior::where('user_id', Auth::id())->get();
+
   ?>
 </head>
 

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Device;
 use App\Models\Senior;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\NotifMail;
+
 
 class DeviceController extends Controller
 {
@@ -40,82 +39,47 @@ class DeviceController extends Controller
     }
 
     //public function getSensorData(Device $device)
-    public function getSensorData()
-    {
-        include('dbcon.php');
+    // public function getSensorData()
+    // {
+    //     include('dbcon.php');
 
-        //$key = $device->id
-        $key = 0;
-        $reference = $database->getReference('/devices')->getChild($key);
-        $records = $reference->getValue();
+    //     //$key = $device->id
+    //     $key = 0;
+    //     $reference = $database->getReference('/devices')->getChild($key);
+    //     $records = $reference->getValue();
 
-        //ddd($records);
+    //     //ddd($records);
 
-        return view('template', [
-            'records' => $records,
-        ]);
-    }
+    //     return view('template', [
+    //         'records' => $records,
+    //     ]);
+    // }
 
     public function viewNotifications(Senior $senior)
     {
-        $var = $this->checkAbnormal($senior);
-
-        if($var == true)
-        {
-            $records = $this->getLatestRecords($senior);
-            foreach($records as $record)
-            {
-                return view('abnormal', [
-                    'abrtemp' => $record['temperature'],
-                    'abrecg' => $record['ecg'],
-                    'abrtime' => $record['recordtime'],
-                ]);
-            }
-        }
-        else if($var == false)
-        {
-            return view('normal', [
-                'senior' => $senior,
-            ]);
-        }
-    }
-
-    public function checkAbnormal(Senior $senior)
-    {
-        $records = $this->getLatestRecords($senior);
-
-        foreach($records as $record)
-        {
-            if(($record['temperature'] > 37.0 || $record['temperature'] < 34) ||
-                ($record['ecg'] > 100 || $record['ecg'] < 80))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
-    public function getLatestRecords(Senior $senior)
-    {
         include('dbcon.php');
         $did = $senior->device->id;
+        //get the latest temperature reading from device where device id == $did
         $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
         $records = $reference->getValue();
 
-        return $records;
-    }
-
-    public function sendEmail()
-    {
-        Mail::to('rofiqurrahman@graduate.utm.my')->send(new NotifMail());
- 
-        // if (Mail::failures()) { 
-        //     return response()->Fail('Sorry! Please try again latter');
-        // }else{
-        //     return response()->success('Great! Successfully send in your mail');
-        // }
-    }
+        //ddd($records);
+        
+        $record = array_values($records)[0];
+        if(($record['temperature'] >= 39.0 || $record['temperature'] < 35) ||
+            ($record['ecg'] > 100 || $record['ecg'] < 60))
+        {
+            return view('abnormal', [
+                'abrtemp' => $record['temperature'],
+                'abrecg' => $record['ecg'],
+                'abrtime' => $record['recordtime'],
+            ]);
+        }
+        else
+        {
+            return view('normal', [
+               'senior' => $senior,
+            ]);
+        }
+    }    
 }
