@@ -48,7 +48,7 @@
             <a class="nav-link">Notifications</a>
             <div class="dropdown-content">
               @foreach($seniorList as $seniorLists)
-              <a class="nav-link" href="checkForAbnormal/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              <a class="nav-link" href="viewNotifications/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
               @endforeach
             </div>
           </li>
