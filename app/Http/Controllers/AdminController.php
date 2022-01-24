@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
-use App\Models\Senior;
+use App\Models\senior;
 use App\Models\Device;
 
 class AdminController extends Controller
@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function manageSeniorsView()
     {
         return view('admin.manageSeniors', [
-            'seniors' => Senior::all(),
+            'seniors' => senior::all(),
         ]);
     }
 
@@ -45,8 +45,8 @@ class AdminController extends Controller
     {
         return view('admin.assign', [
             'devices' => Device::doesntHave('senior')->get(),
-            'seniorsToDevice' => Senior::doesntHave('device')->get(),
-            'seniorsToUser' => Senior::doesntHave('user')->get(),
+            'seniorsToDevice' => senior::doesntHave('device')->get(),
+            'seniorsToUser' => senior::doesntHave('user')->get(),
             'users' => User::all(),
         ]);
     }
@@ -68,7 +68,7 @@ class AdminController extends Controller
         $senior_id = request()->input('selected_senior');
         $user_id = request()->input('selected_user');
 
-        $senior = Senior::find($senior_id);
+        $senior = senior::find($senior_id);
         $senior->user_id = $user_id;
         $senior->save();
 
@@ -78,7 +78,7 @@ class AdminController extends Controller
     public function editAssignment(Device $device)
     {
         return view('admin.editAssignment', [
-            'seniorsToDevice' => Senior::doesntHave('device')->get(),
+            'seniorsToDevice' => senior::doesntHave('device')->get(),
             'users' => User::all(),
             'selectedDevice' => $device,
         ]);
@@ -102,11 +102,11 @@ class AdminController extends Controller
         }
     }
 
-    public function updateSeniorAssign(Senior $senior)
+    public function updateSeniorAssign(senior $senior)
     {
         $newcaretaker = request()->input('new_caretaker');
         
-        $s = Senior::find($senior->id);
+        $s = senior::find($senior->id);
         $s->user_id = $newcaretaker;
         $s->save();
 
