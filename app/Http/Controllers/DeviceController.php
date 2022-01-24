@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Device;
+use App\Models\Senior;
+
 
 class DeviceController extends Controller
 {
@@ -37,19 +39,47 @@ class DeviceController extends Controller
     }
 
     //public function getSensorData(Device $device)
-    public function getSensorData()
+    // public function getSensorData()
+    // {
+    //     include('dbcon.php');
+
+    //     //$key = $device->id
+    //     $key = 0;
+    //     $reference = $database->getReference('/devices')->getChild($key);
+    //     $records = $reference->getValue();
+
+    //     //ddd($records);
+
+    //     return view('template', [
+    //         'records' => $records,
+    //     ]);
+    // }
+
+    public function viewNotifications(Senior $senior)
     {
         include('dbcon.php');
-
-        //$key = $device->id
-        $key = 0;
-        $reference = $database->getReference('/devices')->getChild($key);
+        $did = $senior->device->id;
+        //get the latest temperature reading from device where device id == $did
+        $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
         $records = $reference->getValue();
 
         //ddd($records);
-
-        return view('template', [
-            'records' => $records,
-        ]);
-    }
+        
+        $record = array_values($records)[0];
+        if(($record['temperature'] >= 39.0 || $record['temperature'] < 35) ||
+            ($record['ecg'] > 100 || $record['ecg'] < 60))
+        {
+            return view('abnormal', [
+                'abrtemp' => $record['temperature'],
+                'abrecg' => $record['ecg'],
+                'abrtime' => $record['recordtime'],
+            ]);
+        }
+        else
+        {
+            return view('normal', [
+               'senior' => $senior,
+            ]);
+        }
+    }    
 }

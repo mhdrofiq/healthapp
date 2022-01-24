@@ -16,16 +16,14 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
         
         <main>
+
             <img class="mb-4" src="/img/logo.png" alt="" width="400px">
             <br><br><h1>Welcome to CareWear</h1>
-            <p class="fs-5 col-md-8">Consequat quis ad sint mollit non nulla nulla commodo 
-                cillum id magna. Tempor esse non reprehenderit officia in exercitation labore 
-                dolore mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
-
-            <div class="mb-5">
-                <a href="../examples/" class="btn btn-primary btn-lg px-4">call to action</a>
-            </div>
-
+            <p class="fs-5 col-md-8">
+                Carewear is a health monitoring tool that allows for quick and easy access to 
+                an eldery's real time phisiological measurements from our wearable devices to a 
+                caretaker.
+            </p>
             
         </main>
 

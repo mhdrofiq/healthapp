@@ -44,8 +44,13 @@
               @endforeach
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('abnormal')}}">Abnormalities</a>
+          <li class="nav-item scroll-to-section">
+            <a class="nav-link">Notifications</a>
+            <div class="dropdown-content">
+              @foreach($seniorList as $seniorLists)
+              <a class="nav-link" href="viewNotifications/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              @endforeach
+            </div>
           </li>
           <li class="nav-item">
             <form method="get" action="/logout">
