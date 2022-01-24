@@ -30,11 +30,10 @@ Route::get('/template', function () {   //this is an empty page for testing wip 
 //==================================================================================================
 Route::get('/', [LoginController::class, 'create'])->middleware('guest');
 Route::post('login', [LoginController::class, 'store'])->middleware('guest');
-Route::get('logout', [LogoutController::class, 'destroy'])->middleware('auth');
+Route::get('logout', [LogoutController::class, 'destroy']);
 Route::get('home', [UserController::class, 'homeView']);
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
-
 
 // USER (CARETAKER) ROUTES
 //==================================================================================================

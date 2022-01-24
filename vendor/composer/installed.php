@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5042d93e01c8df3069569b9d0a5e04d46f350ff4',
+        'reference' => '1622515f1d6fe4680c52f79829354da22c8618d4',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -122,12 +122,12 @@
             'dev_requirement' => true,
         ),
         'fakerphp/faker' => array(
-            'pretty_version' => 'v1.17.0',
-            'version' => '1.17.0.0',
+            'pretty_version' => 'v1.18.0',
+            'version' => '1.18.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
-            'reference' => 'b85e9d44eae8c52cca7aa0939483611f7232b669',
+            'reference' => '2e77a868f6540695cf5ebf21e5ab472c65f47567',
             'dev_requirement' => true,
         ),
         'fig/http-message-util' => array(
@@ -490,7 +490,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5042d93e01c8df3069569b9d0a5e04d46f350ff4',
+            'reference' => '1622515f1d6fe4680c52f79829354da22c8618d4',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
