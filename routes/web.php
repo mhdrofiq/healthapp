@@ -34,6 +34,7 @@ Route::get('home', [UserController::class, 'homeView']);
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store']);
 
+Route::get('record', [RecordController::class, 'temp']);
 
 // USER (CARETAKER) ROUTES
 //==================================================================================================
