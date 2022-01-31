@@ -40,7 +40,7 @@
             <a class="nav-link">Data Record</a>
             <div class="dropdown-content">
               @foreach($seniorList as $seniorLists)
-              <a class="nav-link" href="record/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              <a class="nav-link" href="/record/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
               @endforeach
             </div>
           </li>
