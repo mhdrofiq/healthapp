@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifMail;
-use App\Models\Senior;
+use App\Models\senior;
 
 class LoginController extends Controller
 {
@@ -30,7 +30,7 @@ class LoginController extends Controller
         {
             include('dbcon.php');
 
-            $seniorList = Senior::where('user_id', Auth::id())->get();
+            $seniorList = senior::where('user_id', Auth::id())->get();
             foreach($seniorList as $senior)
             {
                 $did = $senior->device->id;
