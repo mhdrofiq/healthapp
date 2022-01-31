@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Device;
-use App\Models\Senior;
+use App\Models\senior;
 
 
 class DeviceController extends Controller
@@ -55,7 +55,7 @@ class DeviceController extends Controller
     //     ]);
     // }
 
-    public function viewNotifications(Senior $senior)
+    public function viewNotifications(senior $senior)
     {
         include('dbcon.php');
         $did = $senior->device->id;

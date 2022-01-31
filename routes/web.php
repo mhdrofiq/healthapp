@@ -87,7 +87,7 @@ Route::get('addDevice', [DeviceController::class, 'store'])->middleware('auth:ad
 Route::delete('deleteDevice/{device}', [DeviceController::class, 'destroy'])->middleware('auth:admin');
 //Route::get('getSensorData/{device}', [DeviceController::class, 'getSensorData']);
 //Route::get('getSensorData', [DeviceController::class, 'getSensorData']);
-Route::get('viewNotifications/{senior}', [DeviceController::class, 'viewNotifications'])->middleware('auth');
+Route::get('/viewNotifications/{senior}', [DeviceController::class, 'viewNotifications'])->middleware('auth');
 //Route::get('checkAbnormal/{senior}', [DeviceController::class, 'checkAbnormal']);
 
 Route::get('firebasesdk', [FirebaseController::class, 'index']);
