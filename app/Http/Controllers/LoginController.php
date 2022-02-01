@@ -42,7 +42,7 @@ class LoginController extends Controller
                     ($record['ecg'] > 100 || $record['ecg'] < 80))
                 {
                     //$this->sendMail(auth()->user()->email);
-                    //$this->sendEmail('rofiqurrahman@graduate.utm.my');
+                    $this->sendEmail('rofiqurrahman@graduate.utm.my');
                 }
             }
 
