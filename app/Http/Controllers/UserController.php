@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\senior;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 

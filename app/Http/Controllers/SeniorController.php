@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Device;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Request;
 use App\Models\senior;
-use App\Models\Heartrate;
+use Exception;
 
 class SeniorController extends Controller
 {
@@ -77,21 +76,36 @@ class SeniorController extends Controller
             $senior = senior::where('id', $id)->first();
             $device = Device::where('senior_id', $senior->id)->first();
 
-            $grandChildKey = $database->getReference('devices')->getChild($device->id)->getChildKeys();
+            try
+            {
+                $grandChildKey = $database->getReference('devices')->getChild($device->id)->getChildKeys();
 
-            $bpm = [];
-            $recordTime = [];
-            foreach($grandChildKey as $grandChildKeys){
-                $bpm[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/ecg')->getValue();
-                $recordTime[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/recordtime')->getValue();
+                $bpm = [];
+                $recordTime = [];
+                foreach($grandChildKey as $grandChildKeys){
+                    $bpm[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/ecg')->getValue();
+                    $recordTime[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/recordtime')->getValue();
+                }
+    
+                //this is to get a collection of records from a device
+                $reference = $database->getReference('devices')->getChild($device->id)->orderByKey();
+                $records = $reference->getValue();
+        
+                //ddd($records);
+
+                return view('record', [
+                    "yValues" => json_encode($bpm),
+                    "xValues" => json_encode($recordTime),
+                    "senior" => $senior,
+                    "records" => $records,
+                ]);
             }
-    
-            //ddd($records);
-    
-            return view('record', [
-                "yValues" => json_encode($bpm),
-                "xValues" => json_encode($recordTime),
-                "senior" => $senior,
-            ]);
+            catch(Exception $e)
+            {
+                return view('nodevice', [
+                    "senior" => $senior,
+                ]);
+            }
+            
         }
 }
