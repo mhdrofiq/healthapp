@@ -73,9 +73,9 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
-                                @if((Auth::user()->gender) == 'm')
+                                @if((Auth::user()->gender) == 'Male')
                                 <p>Male</p>
-                                @else((Auth::user()->gender) == 'f')
+                                @elseif((Auth::user()->gender) == 'Female')
                                 <p>Female</p>
                                 @endif
                             </div>

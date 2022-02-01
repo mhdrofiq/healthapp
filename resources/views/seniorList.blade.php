@@ -45,9 +45,9 @@
                 <div class="information">
                     <p><b>Full Name:</b> {{ $seniorLists->senior_name }}</p>
                     <p><b>Gender:</b>
-                        @if(($seniorLists->senior_gender) == 'm')
+                        @if(($seniorLists->senior_gender) == 'Male')
                         Male
-                        @else(($seniorLists->senior_gender) == 'f')
+                        @elseif(($seniorLists->senior_gender) == 'Female')
                         Female
                         @endif
                     </p>
