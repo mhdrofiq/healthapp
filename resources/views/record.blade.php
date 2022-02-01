@@ -47,68 +47,22 @@
             </div><br>
 
             <div class="container emp-profile">
+                <h2>List of all recorded measurements</h2>
+                <p style="text-align: center;"><b>{{ $senior->senior_name }}</b>'s temperature and heart rate records</p>
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
-                            <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Temperature</th>
                             <th scope="col">Heart Rate</th>
                         </tr>
+                        @foreach ($records as $record)
                         <tr>
-                            <td>10/10/21</td>
-                            <td>10:00</td>
-                            <td>35</td>
-                            <td>74</td>
+                            <td>{{$record['recordtime']}}</td>
+                            <td>{{$record['temperature']}}</td>
+                            <td>{{$record['ecg']}}</td>
                         </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>10:30</td>
-                            <td>34</td>
-                            <td>75</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>11:00</td>
-                            <td>36</td>
-                            <td>77</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>11:30</td>
-                            <td>36</td>
-                            <td>80</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>12:00</td>
-                            <td>35</td>
-                            <td>73</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>12:30</td>
-                            <td>34</td>
-                            <td>74</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>01:00</td>
-                            <td>33</td>
-                            <td>76</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>01:30</td>
-                            <td>35</td>
-                            <td>75</td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>02:00</td>
-                            <td>36</td>
-                            <td>75</td>
-                        </tr>
+                        @endforeach
                     </thead>
                 </table>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Device;
 use App\Models\senior;
+use Exception;
 
 
 class DeviceController extends Controller
@@ -58,28 +59,39 @@ class DeviceController extends Controller
     public function viewNotifications(senior $senior)
     {
         include('dbcon.php');
-        $did = $senior->device->id;
-        //get the latest temperature reading from device where device id == $did
-        $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
-        $records = $reference->getValue();
 
-        //ddd($records);
+        try
+        {
+            $did = $senior->device->id;
+            //get the latest temperature reading from device where device id == $did
+            $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
+            $records = $reference->getValue();
+    
+            //ddd($records);
+            
+            $record = array_values($records)[0];
+            if(($record['temperature'] >= 39.0 || $record['temperature'] < 35) ||
+                ($record['ecg'] > 100 || $record['ecg'] < 60))
+            {
+                return view('abnormal', [
+                    'abrtemp' => $record['temperature'],
+                    'abrecg' => $record['ecg'],
+                    'abrtime' => $record['recordtime'],
+                ]);
+            }
+            else
+            {
+                return view('normal', [
+                   'senior' => $senior,
+                ]);
+            }
+        }
+        catch(Exception $e)
+        {
+            return view('nodevice', [
+                'senior' => $senior,
+            ]);
+        }
         
-        $record = array_values($records)[0];
-        if(($record['temperature'] >= 39.0 || $record['temperature'] < 35) ||
-            ($record['ecg'] > 100 || $record['ecg'] < 60))
-        {
-            return view('abnormal', [
-                'abrtemp' => $record['temperature'],
-                'abrecg' => $record['ecg'],
-                'abrtime' => $record['recordtime'],
-            ]);
-        }
-        else
-        {
-            return view('normal', [
-               'senior' => $senior,
-            ]);
-        }
     }    
 }
