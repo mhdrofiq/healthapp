@@ -10,6 +10,7 @@ use App\Models\senior;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Exception;
 
 class UserController extends Controller
 {
@@ -78,16 +79,24 @@ class UserController extends Controller
 
     public function seniorList()
     {
-        $seniorList = senior::where('user_id', Auth::id())->get();
+        try
+        {
+            $seniorList = senior::where('user_id', Auth::id())->get();
 
-        foreach ($seniorList as $seniorLists) {
-            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+            foreach ($seniorList as $seniorLists) {
+                $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+            }
+    
+            return view("seniorList", [
+                "seniorList" => $seniorList,
+                "seniorAge" => $age,
+            ]);
         }
-
-        return view("seniorList", [
-            "seniorList" => $seniorList,
-            "seniorAge" => $age,
-        ]);
+        catch(Exception $e)
+        {
+            return view("nosenior");
+        }
+        
     }
     
 
