@@ -58,7 +58,7 @@
                 </div> <br>
                 <ul>
                     <li style="position: relative; text-align:center">
-                        <a href="record/{{$seniorLists->id}}" type="button" class="profile-edit-btn" style="text-decoration: none;">See Data Record</a>
+                        <a href="/record/{{$seniorLists->id}}" type="button" class="profile-edit-btn" style="text-decoration: none;">See Data Record</a>
                     </li>
                 </ul>
             </div><br>
