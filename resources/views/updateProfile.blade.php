@@ -52,12 +52,12 @@
                                 <label class="col-lg-3 control-label" for="gender">Gender:</label>
                                 <div class="col-lg-8">
                                     <select class="form-control" name="gender" required>
-                                        @if((Auth::user()->gender) == 'm')
-                                        <option value="m" style="color: grey" selected>Male</option>
-                                        <option value="f" style="color: grey;">Female</option>
-                                        @else((Auth::user()->gender) == 'f')
-                                        <option value="f" style="color: grey;" selected>Female</option>
-                                        <option value="m" style="color: grey">Male</option>
+                                        @if((Auth::user()->gender) == 'Male')
+                                        <option value="Male" style="color: grey" selected>Male</option>
+                                        <option value="Female" style="color: grey;">Female</option>
+                                        @elseif((Auth::user()->gender) == 'Female')
+                                        <option value="Female" style="color: grey;" selected>Female</option>
+                                        <option value="Male" style="color: grey">Male</option>
                                         @endif
                                     </select>
 
