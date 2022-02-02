@@ -133,9 +133,11 @@ class SeniorController extends Controller
             {
                 $grandChildKey = $database->getReference('devices')->getChild($device->id)->getChildKeys();
 
+                $temp = [];
                 $bpm = [];
                 $recordTime = [];
                 foreach($grandChildKey as $grandChildKeys){
+                    $temp[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/temperature')->getValue();
                     $bpm[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/ecg')->getValue();
                     $recordTime[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/recordtime')->getValue();
                 }
@@ -151,6 +153,7 @@ class SeniorController extends Controller
                     "xValues" => json_encode($recordTime),
                     "senior" => $senior,
                     "records" => $records,
+                    "yVal" => json_encode($temp),
                 ]);
             }
             catch(Exception $e)
