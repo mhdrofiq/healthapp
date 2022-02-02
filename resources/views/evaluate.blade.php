@@ -19,67 +19,91 @@
 
         <main>
         <h1 class="text-white" style="text-align: center;">Health Evaluation</h1><br>
-            <p class="text-white" style="text-align: center;">Below is the Health Evaluation of <b>Miss Elinor Glover</b></p>
+            <p class="text-white" style="text-align: center;">Below is the Health Evaluation of <b>{{ $senior->senior_name }}</b></p>
             <hr class="text-white"><br>
 
-            <div class="card text-white text-center bg-success mb-3">
-                <div class="card-body">
-                    <h4 class="card-title">All Good!</h4>
-                    <p class="card-text">
-                        All measurements are within normal ranges. This senior citizen is healthy.
-                    </p>
+            @if ($statusflag == true)
+                <div class="card text-white text-center bg-success mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">All Good!</h4>
+                        <p class="card-text">
+                            All measurements are within normal ranges. This senior citizen is healthy.
+                        </p>
+                    </div>
                 </div>
-            </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <ul style="color: black;">
+                            <li>{{ $senior->senior_name }}'s most recent body temperatures are within normal range.</li>
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are within normal range.</li>
+                            <li>In person monitoring is deemed unnecessary for the current time.</li>
+                        </ul>
+                    </div>
+                </div>
+            @elseif ($statusflag == false)
+                <div class="card text-white text-center bg-danger mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Warning. This senior citizen is not well.</h4>
+                        <p class="card-text">
+                            The most recent measurements are out of the expected range. View notifications for more info.
+                        </p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <ul style="color: black;">
+                            @if ($tempflag == false)
+                            <li>{{ $senior->senior_name }}'s recent body temperatures are out of the normal range.</li>
+                            @else
+                            <li>{{ $senior->senior_name }}'s most recent body temperatures are within normal range.</li>
+                            @endif
+                            @if ($heartflag == false)
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are out of the normal range.</li>
+                            @else
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are within normal range.</li>
+                            @endif
+                            <li>In person monitoring is necessary for the current time.</li>
+                        </ul>
+                    </div>
+                </div>
+            @endif
+            
 
-            <div class="card mb-3">
-                <div class="card-body">
-                    <ul style="color: black;">
-                        <li>patient's most recent body temperatures are within normal range.</li>
-                        <li>patient's most recent heart rates are within normal range.</li>
-                        <li>In person monitoring is deemed unnecessary for the current time.</li>
-                        <li>Carewear has detected a rise in temperature over the last 3 readings</li>
-                    </ul>
-                </div>
-            </div>
+            
 
             <div class="container emp-profile">
                 <table class="table table-striped table-sm">
-                    <h3>List Of Recent Data:</h3>
+                    <h3>Recently Measured Data</h3>
                     <br>
                     <thead>
-                        
                         <tr>
-                            <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Temperature</th>
+                            <th scope="col"></th>
                             <th scope="col">Heart Rate</th>
-                            <th scope="col">Summary</th>
+                            <th scope="col"></th>
                         </tr>
+                        @foreach ($records as $record)
                         <tr>
-                            <td>10/10/21</td>
-                            <td>10:00</td>
-                            <td>36</td>
-                            <td>74</td>
-                            <td style="color: green;">
-                                Normal 
-                            </td>
+                            <td>{{ $record['recordtime'] }}</td>
+                            <td>{{ $record['temperature'] }}</td>
+                            @if (($record['temperature'] < 35))
+                            <td class="text-danger">Low temperature</td>
+                            @elseif ($record['temperature'] >= 39.0)
+                            <td class="text-danger">High temperature</td>
+                            @else
+                            <td class="text-success">Normal temperature</td>
+                            @endif
+                            <td>{{ $record['ecg'] }}</td>
+                            @if ($record['ecg'] < 60)
+                            <td class="text-danger">Low heart rate</td>
+                            @elseif ($record['ecg'] > 100)
+                            <td class="text-danger">High heart rate</td>
+                            @else
+                            <td class="text-success">Normal heart rate</td>
+                            @endif
                         </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>10:30</td>
-                            <td>34</td>
-                            <td>60</td>
-                            <td style="color:blue">
-                                Abnormal(low)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10/10/21</td>
-                            <td>11:00</td>
-                            <td>36</td>
-                            <td>77</td>
-                            <td style="color: green;">Normal</td>
-                        </tr>
+                        @endforeach
                     </thead>
                 </table>   
             </div>
