@@ -35,11 +35,6 @@ Route::get('home', [UserController::class, 'homeView']);
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
 
-<<<<<<< HEAD
-Route::get('record', [RecordController::class, 'temp']);
-
-=======
->>>>>>> main
 // USER (CARETAKER) ROUTES
 //==================================================================================================
 Route::get('profile', [UserController::class, 'profileView']);

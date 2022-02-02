@@ -3,11 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-<<<<<<< HEAD
-use App\Models\Senior;
-use App\Models\Temperature;
-=======
->>>>>>> main
 
 class RegisterController extends Controller
 {
