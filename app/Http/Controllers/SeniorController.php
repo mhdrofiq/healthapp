@@ -14,9 +14,62 @@ class SeniorController extends Controller
         return view('admin.newSeniorForm');
     }
 
-    public function evaluateView()
+    public function evaluateView(senior $senior)
     {
-        return view('evaluate');
+        include('dbcon.php');
+        try
+        {
+            $did = $senior->device->id;
+            //get the latest temperature reading from device where device id == $did
+            $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(3);
+            $records = $reference->getValue();
+    
+            //ddd($records);
+    
+            $statusflag;
+            $tempflag;
+            $heartflag;
+    
+            foreach($records as $record)
+            {
+                if($record['temperature'] < 35)
+                {
+                    $statusflag = false;
+                    $tempflag = false;
+                }
+                else if($record['temperature'] >= 39.0)
+                {
+                    $statusflag = false;
+                    $tempflag = false;
+                }
+    
+                if($record['ecg'] < 60)
+                {
+                    $statusflag = false;
+                    $heartflag = false;
+                }
+                else if($record['ecg'] > 100)
+                {
+                    $statusflag = false;
+                    $heartflag = false;
+                }
+            }
+    
+            return view('evaluate', [
+                'records' => $records,
+                'statusflag' => $statusflag,
+                'tempflag' => $tempflag,
+                'heartflag' => $heartflag,
+                'senior' => $senior,
+            ]);
+        }
+        catch(Exception $e)
+        {
+            return view('noevaluate', [
+                'senior' => $senior,
+            ]);
+        }
+        
     }
 
     public function store()
