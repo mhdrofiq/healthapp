@@ -30,52 +30,10 @@
 
             <div class="container emp-profile">
                 <h2>Temperature Record</h2>
-                <p>Consequat quis ad sint mollit non nulla nulla commodo cillum id magna.
-                    Tempor esse non reprehenderit officia in exercitation labore dolore
-                    mollit. Amet et elit commodo eu dolore do mollit do et aliqua.</p>
-                
-                    <p style="text-align: center;">Monitored <b><?php echo $sName ?></b> Temperature Record.</p>
+                <p style="text-align: center;">Monitored <b>{{ $senior->senior_name }}</b> Temperature Record.</p>
                 <div>
                     <canvas id="tempChart" width="800" height="200"></canvas>
                 </div>
-                <script>
-                    var xVal = <?= $xVal ?>;
-                    var yVal = <?= $yVal ?>;
-
-                    new Chart("temperatureChart", {
-                        type: "line",
-                        data: {
-                            labels: xVal,
-                            datasets: [{
-                                fill: false,
-                                backgroundColor: "rgba(0,0,255,1.0)",
-                                borderColor: "rgba(0,0,255,0.1)",
-                                pointRadius: 5,
-                                pointHoverRadius: 7,
-                                data: yVal,
-                            }]
-                        },
-                        options: {
-                            legend: {
-                                display: false
-                            },
-                            scales: {
-                                yAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Temperature (Celcius)'
-                                    }
-                                }],
-                                xAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Time recorded',
-                                    }
-                                }]
-                            }
-                        }
-                    });
-                </script>
             </div><br>
 
             <div class="container emp-profile">
@@ -112,7 +70,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="recordscript.js"></script>
 
+    <script>
+        var xValues = <?= $xValues ?>;
+        var yValues = <?= $yVal ?>;
 
+        new Chart("tempChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    backgroundColor: "rgba(190, 37, 37,1.0)",
+                    borderColor: "rgba(190, 37, 37, 0.1)",
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    data: yValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperature (Celcius)'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time recorded',
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
     <script>
         var xValues = <?= $xValues ?>;
         var yValues = <?= $yValues ?>;
