@@ -16,7 +16,11 @@ class SeniorController extends Controller
 
     public function evaluateView()
     {
-        return view('evaluate');
+        include('dbcon.php');
+        $did = $senior->device->id;
+        //get the latest temperature reading from device where device id == $did
+        $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(1);
+        $records = $reference->getValue();
     }
 
     public function store()

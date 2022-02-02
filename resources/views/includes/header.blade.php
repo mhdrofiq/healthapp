@@ -33,8 +33,13 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url('seniorList')}}">Senior List</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('evaluate')}}">Evaluate Condition</a>
+          <li class="nav-item scroll-to-section">
+            <a class="nav-link">Evaluate Condition</a>
+            <div class="dropdown-content">
+              @foreach($seniorList as $seniorLists)
+              <a class="nav-link" href="/evaluate/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              @endforeach
+            </div>
           </li>
           <li class="nav-item scroll-to-section">
             <a class="nav-link">Data Record</a>

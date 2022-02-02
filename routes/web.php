@@ -58,7 +58,7 @@ Route::get('editSenior/{senior}', [SeniorController::class, 'edit'])->middleware
 Route::patch('editSenior/{senior}', [SeniorController::class, 'update'])->middleware('auth:admin');
 Route::delete('deleteSenior/{senior}', [SeniorController::class, 'destroy'])->middleware('auth:admin');
 Route::get('/record/{id}', [SeniorController::class, 'index']);
-Route::get('evaluate', [SeniorController::class, 'evaluateView']);
+Route::get('evaluate/{id}', [SeniorController::class, 'evaluateView']);
 // Route::get('abnormal', [SeniorController::class, 'abnormalView']);
 
 
