@@ -9,9 +9,11 @@
         "consoletvs/charts": "^6.5",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kreait/laravel-firebase": "^3.4",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "lcobucci/jwt": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

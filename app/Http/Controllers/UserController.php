@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Senior;
+use App\Models\senior;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
-use function Ramsey\Uuid\v6;
+use Exception;
 
 class UserController extends Controller
 {
@@ -29,7 +26,7 @@ class UserController extends Controller
     public function profileView()
     {
         return view('profile', [
-            'user' => User::first()
+            'user' => auth()->user(),
         ]);
     }
 
@@ -82,16 +79,24 @@ class UserController extends Controller
 
     public function seniorList()
     {
-        $seniorList = Senior::where('user_id', Auth::id())->get();
+        try
+        {
+            $seniorList = senior::where('user_id', Auth::id())->get();
 
-        foreach ($seniorList as $seniorLists) {
-            $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+            foreach ($seniorList as $seniorLists) {
+                $age[] = Carbon::parse($seniorLists->senior_birthdate)->diff(Carbon::now())->y;
+            }
+    
+            return view("seniorList", [
+                "seniorList" => $seniorList,
+                "seniorAge" => $age,
+            ]);
         }
-
-        return view("seniorList", [
-            "seniorList" => $seniorList,
-            "seniorAge" => $age,
-        ]);
+        catch(Exception $e)
+        {
+            return view("nosenior");
+        }
+        
     }
     
 
@@ -150,7 +155,7 @@ class UserController extends Controller
 
     public function adminDestroy(User $user)
     {
-        Senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
+        senior::where('user_id', '=', $user->id)->update(['user_id' => null]);
         $user->delete();
         return back();
     }

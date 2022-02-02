@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Request;
-use App\Models\Senior;
-use App\Models\Heartrate;
+use App\Models\senior;
+use Exception;
 
 class SeniorController extends Controller
 {
@@ -14,9 +14,62 @@ class SeniorController extends Controller
         return view('admin.newSeniorForm');
     }
 
-    public function evaluateView()
+    public function evaluateView(senior $senior)
     {
-        return view('evaluate');
+        include('dbcon.php');
+        try
+        {
+            $did = $senior->device->id;
+            //get the latest temperature reading from device where device id == $did
+            $reference = $database->getReference('devices')->getChild($did)->orderByKey()->limitToLast(3);
+            $records = $reference->getValue();
+    
+            //ddd($records);
+    
+            $statusflag;
+            $tempflag;
+            $heartflag;
+    
+            foreach($records as $record)
+            {
+                if($record['temperature'] < 35)
+                {
+                    $statusflag = false;
+                    $tempflag = false;
+                }
+                else if($record['temperature'] >= 39.0)
+                {
+                    $statusflag = false;
+                    $tempflag = false;
+                }
+    
+                if($record['ecg'] < 60)
+                {
+                    $statusflag = false;
+                    $heartflag = false;
+                }
+                else if($record['ecg'] > 100)
+                {
+                    $statusflag = false;
+                    $heartflag = false;
+                }
+            }
+    
+            return view('evaluate', [
+                'records' => $records,
+                'statusflag' => $statusflag,
+                'tempflag' => $tempflag,
+                'heartflag' => $heartflag,
+                'senior' => $senior,
+            ]);
+        }
+        catch(Exception $e)
+        {
+            return view('noevaluate', [
+                'senior' => $senior,
+            ]);
+        }
+        
     }
 
     public function store()
@@ -29,7 +82,7 @@ class SeniorController extends Controller
             'senior_birthdate' => 'required',
         ]);
 
-        if(Senior::create($newsenior))
+        if(senior::create($newsenior))
         {
             //redirect with a success flash message
             return redirect('manageSeniors');
@@ -40,14 +93,14 @@ class SeniorController extends Controller
         ]);
     }
 
-    public function edit(Senior $senior)
+    public function edit(senior $senior)
     {
         return view('admin.editSenior', [
             'senior' => $senior,
         ]);
     }
 
-    public function update(Senior $senior)
+    public function update(senior $senior)
     {
         $attributes = request()->validate([
             'senior_name' => 'required',
@@ -63,29 +116,49 @@ class SeniorController extends Controller
 
     }
 
-    public function destroy(Senior $senior)
+    public function destroy(senior $senior)
     {
         $senior->delete();
         return back();
     }
 
-    public function index($id)
-    {
-        $senior = senior::where('id', $id)->first();
-        $heartRate = Heartrate::where('senior_id', $id)->orderBy('recordtime_hr')->get();
+        public function index($id)
+        {
+            include('dbcon.php');
+
+            $senior = senior::where('id', $id)->first();
+            $device = Device::where('senior_id', $senior->id)->first();
+
+            try
+            {
+                $grandChildKey = $database->getReference('devices')->getChild($device->id)->getChildKeys();
+
+                $bpm = [];
+                $recordTime = [];
+                foreach($grandChildKey as $grandChildKeys){
+                    $bpm[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/ecg')->getValue();
+                    $recordTime[] = $database->getReference('devices/'.$device->id.'/'.$grandChildKeys.'/recordtime')->getValue();
+                }
+    
+                //this is to get a collection of records from a device
+                $reference = $database->getReference('devices')->getChild($device->id)->orderByKey();
+                $records = $reference->getValue();
         
-        $bpm = [];
-        $recordTime = [];
+                //ddd($records);
 
-        foreach($heartRate as $heartRates){
-            $bpm[] = $heartRates->bpm;
-            $recordTime[] = $heartRates->recordtime_hr;
+                return view('record', [
+                    "yValues" => json_encode($bpm),
+                    "xValues" => json_encode($recordTime),
+                    "senior" => $senior,
+                    "records" => $records,
+                ]);
+            }
+            catch(Exception $e)
+            {
+                return view('nodevice', [
+                    "senior" => $senior,
+                ]);
+            }
+            
         }
-
-        return view('record', [
-            "yValues" => json_encode($bpm),
-            "xValues" => json_encode($recordTime),
-            "senior" => $senior
-        ]);
-    }
 }

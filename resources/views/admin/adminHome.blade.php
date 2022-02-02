@@ -38,7 +38,9 @@
                                 <td>{{ $device->id }}</td>
                                 <td>{{ $device->senior->senior_name }}</td>
                                 <td>{{ $device->senior->user->name }}</td>
-                                <td><button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></button></td>
+                                <td>
+                                    <a href="/editAssignment/{{$device->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

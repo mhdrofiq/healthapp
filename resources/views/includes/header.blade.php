@@ -8,10 +8,10 @@
   <link href="{{asset('/css/navbar-top.css')}}" rel="stylesheet">
   <?php
 
-  use App\Models\Senior;
+  use App\Models\senior;
   use Illuminate\Support\Facades\Auth;
 
-  $seniorList = Senior::where('user_id', Auth::id())->get();
+  $seniorList = senior::where('user_id', Auth::id())->get();
   ?>
 </head>
 
@@ -33,19 +33,29 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url('seniorList')}}">Senior List</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('evaluate')}}">Evaluate Condition</a>
+          <li class="nav-item scroll-to-section">
+            <a class="nav-link">Evaluate Condition</a>
+            <div class="dropdown-content">
+              @foreach($seniorList as $seniorLists)
+              <a class="nav-link" href="/evaluate/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              @endforeach
+            </div>
           </li>
           <li class="nav-item scroll-to-section">
             <a class="nav-link">Data Record</a>
             <div class="dropdown-content">
               @foreach($seniorList as $seniorLists)
-              <a class="nav-link" href="record/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              <a class="nav-link" href="/record/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
               @endforeach
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('abnormal')}}">Abnormalities</a>
+          <li class="nav-item scroll-to-section">
+            <a class="nav-link">Notifications</a>
+            <div class="dropdown-content">
+              @foreach($seniorList as $seniorLists)
+              <a class="nav-link" href="/viewNotifications/{{$seniorLists->id}}">{{ $seniorLists->senior_name }}</a>
+              @endforeach
+            </div>
           </li>
           <li class="nav-item">
             <form method="get" action="/logout">

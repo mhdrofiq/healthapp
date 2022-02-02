@@ -23,11 +23,8 @@ class DatabaseSeeder extends Seeder
     {
         User::truncate();
         Senior::truncate();
-        Temperature::truncate();
-        Heartrate::truncate();
         Admin::truncate();
         Device::truncate();
-        SensorData::truncate();
 
         //seed admins
 
@@ -68,39 +65,10 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user3->id
         ]);
 
-        //seed temperatures
-
-        Temperature::factory(5)->create([
-            'senior_id' => $senior1->id
-        ]);
-        Temperature::factory(5)->create([
-            'senior_id' => $senior2->id
-        ]);
-        Temperature::factory(5)->create([
-            'senior_id' => $senior3->id
-        ]);
-
-        //seed heartrates
-
-        Heartrate::factory(5)->create([
-            'senior_id'=> $senior1->id
-        ]);
-        Heartrate::factory(5)->create([
-            'senior_id'=> $senior2->id
-        ]);
-        Heartrate::factory(5)->create([
-            'senior_id'=> $senior3->id
-        ]);
-
         //seed devices
 
         $device1 = Device::factory()->create([
             'senior_id' => $senior1->id,
-        ]);
-
-        //seed sensor data
-        SensorData::factory(3)->create([
-            'device_id' => $device1->id,
         ]);
     }
 }

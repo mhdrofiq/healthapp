@@ -73,9 +73,9 @@
                                 <label><b>Gender :</b></label>
                             </div>
                             <div class="col-md-6">
-                                @if((Auth::user()->gender) == 'm')
+                                @if((Auth::user()->gender) == 'Male')
                                 <p>Male</p>
-                                @else((Auth::user()->gender) == 'f')
+                                @elseif((Auth::user()->gender) == 'Female')
                                 <p>Female</p>
                                 @endif
                             </div>
@@ -117,95 +117,6 @@
                 <div class="col-md-2">
                     <a style="text-decoration: none;" href="updateProfile" class="profile-edit-btn" name="btnAddMore">Edit profile </a><br>
                     
-                </div>
-                
-            </div>
-            
-        </form>
-    </div>
-    <h2 style="margin-left: 40%; color:white">Senior Citizen List: </h2>
-    <div class="container emp-profile">
-        <form method="post">
-
-            <div class="row">
-
-                <div class="col-md-4">
-
-                    <div class="profile-img">
-                        
-                        <br>
-                        <img style="border-radius: 50%;" src="https://i.ibb.co/yqJHCY7/Short-Haircuts-50-Different-Ways-to-Style-Your-Short-Hair-2021.jpg" alt="" />
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-md-6">
-                    <div class="profile-head">
-                        <h4>{{ Auth::user()->senior->senior_name }}</h4>
-                       
-                        <br>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Name :</b></label>
-                            </div>
-                            <div class="col-md-6">
-                            {{ Auth::user()->senior->senior_name }}
-                                
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Gender : </b></label>
-                            </div>
-                            <div class="col-md-6">
-                            @if((Auth::user()->senior->senior_gender) == 'm')
-                                <p>Male</p>
-                                @else((Auth::user()->senior->senior_gender) == 'f')
-                                <p>Female</p>
-                                @endif
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Birthday :</b></label>
-                            </div>
-                            <div class="col-md-6">
-                            {{ Auth::user()->senior->senior_birthdate }}
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Age :</b></label>
-                            </div>
-                            <div class="col-md-6">
-                            12
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Phone :</b></label>
-                            </div>
-                            <div class="col-md-6">
-                            {{ Auth::user()->senior->senior_phone }}
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label><b>Address :</b></label>
-                            </div>
-                            <div class="col-md-6">
-                            {{ Auth::user()->senior->senior_address }}
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
             </div>

@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     @include('includes.head')
     <title>Health Evaluation</title>
     <!-- Custom styles for this template -->
     <link href="{{asset('/css/data-record.css')}}" rel="stylesheet">
-    
+
 </head>
 
 <body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff);">
@@ -15,168 +16,106 @@
     </header>
 
     <div class="col-lg-8 mx-auto p-3 py-md-5">
-        
+
         <main>
-        <h1 class="text-white"><b>{{ Auth::user()->senior->senior_name }}'s Health Evaluation</b></h1>
-        
-        <p class="text-white">Labore in enim cupidatat ullamco do ea est dolore culpa laboris Lorem 
-                tempor mollit. In est laboris laboris deserunt ullamco ea cillum deserunt 
-                tempor. Culpa exercitation consectetur et est minim reprehenderit proident. 
-                Mollit occaecat deserunt minim commodo laboris aliqua aliqua occaecat anim 
-                ipsum magna irure enim.</p>
-                <br>
-        <div class="container emp-profile">
-                <table class="table table-striped table-sm">
-                    <h2><b>Temperature Evaluation</b></h2>
-                    <br>
-                <thead>
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Temperature</th>
-                        <th scope="col">Summary</th>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>10:00</td>
-                        <td>35</td>
-                        <td>Normal Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>10:30</td>
-                        <td>34</td>
-                        <td>Low Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>11:00</td>
-                        <td>36</td>
-                        <td>Normal Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>11:30</td>
-                        <td>36</td>
-                        <td>Normal Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>12:00</td>
-                        <td>35</td>
-                        <td>Normal Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>12:30</td>
-                        <td>37</td>
-                        <td>High Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>01:00</td>
-                        <td>33</td>
-                        <td>Low Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>01:30</td>
-                        <td>35</td>
-                        <td>Normal Temperature</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>02:00</td>
-                        <td>38</td>
-                        <td>High Temperature</td>
-                    </tr>
-                </thead>
-                    
-                </table>
-                <b>Note:</b><br>
-                        32-34 = Low Temperature <br>
-                        35-36 = Normal Temperature <br>
-                        37-38 = High Temperature<br>
-        </div>
-        <br>
-                <div class="container emp-profile">
-                <table class="table table-striped table-sm">
-                <h2><b>Heart Rate Evaluation</b></h2>
-                <br>
-                <thead>
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Heart Rate</th>
-                        <th scope="col">Summary</th>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>10:00</td>
-                        <td>74</td>
-                        <td>Normal Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>10:30</td>
-                        <td>75</td>
-                        <td>Normal Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>11:00</td>
-                        <td>100</td>
-                        <td>High Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>11:30</td>
-                        <td>60</td>
-                        <td>Low Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>12:00</td>
-                        <td>58</td>
-                        <td>Low Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>12:30</td>
-                        <td>105</td>
-                        <td>High Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>01:00</td>
-                        <td>76</td>
-                        <td>Normal Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>01:30</td>
-                        <td>110</td>
-                        <td>High Heart Rate</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/21</td>
-                        <td>02:00</td>
-                        <td>75</td>
-                        <td>Normal Heart Rate</td>
-                    </tr>
-                </thead>
-                </table>
-                <b>Note:</b><br>
-                        55-70 = Low Heart Rate <br>
-                        71-99 = Normal Heart Rate <br>
-                        100-170 = High Heart Rate<br>
+        <h1 class="text-white" style="text-align: center;">Health Evaluation</h1><br>
+            <p class="text-white" style="text-align: center;">Below is the Health Evaluation of <b>{{ $senior->senior_name }}</b></p>
+            <hr class="text-white"><br>
+
+            @if ($statusflag == true)
+                <div class="card text-white text-center bg-success mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">All Good!</h4>
+                        <p class="card-text">
+                            All measurements are within normal ranges. This senior citizen is healthy.
+                        </p>
+                    </div>
                 </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <ul style="color: black;">
+                            <li>{{ $senior->senior_name }}'s most recent body temperatures are within normal range.</li>
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are within normal range.</li>
+                            <li>In person monitoring is deemed unnecessary for the current time.</li>
+                        </ul>
+                    </div>
+                </div>
+            @elseif ($statusflag == false)
+                <div class="card text-white text-center bg-danger mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Warning. This senior citizen is not well.</h4>
+                        <p class="card-text">
+                            The most recent measurements are out of the expected range. View notifications for more info.
+                        </p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <ul style="color: black;">
+                            @if ($tempflag == false)
+                            <li>{{ $senior->senior_name }}'s recent body temperatures are out of the normal range.</li>
+                            @else
+                            <li>{{ $senior->senior_name }}'s most recent body temperatures are within normal range.</li>
+                            @endif
+                            @if ($heartflag == false)
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are out of the normal range.</li>
+                            @else
+                            <li>{{ $senior->senior_name }}'s most recent heart rates are within normal range.</li>
+                            @endif
+                            <li>In person monitoring is necessary for the current time.</li>
+                        </ul>
+                    </div>
+                </div>
+            @endif
+            
+
+            
+
+            <div class="container emp-profile">
+                <table class="table table-striped table-sm">
+                    <h3>Recently Measured Data</h3>
+                    <br>
+                    <thead>
+                        <tr>
+                            <th scope="col">Time</th>
+                            <th scope="col">Temperature</th>
+                            <th scope="col"></th>
+                            <th scope="col">Heart Rate</th>
+                            <th scope="col"></th>
+                        </tr>
+                        @foreach ($records as $record)
+                        <tr>
+                            <td>{{ $record['recordtime'] }}</td>
+                            <td>{{ $record['temperature'] }}</td>
+                            @if (($record['temperature'] < 35))
+                            <td class="text-danger">Low temperature</td>
+                            @elseif ($record['temperature'] >= 39.0)
+                            <td class="text-danger">High temperature</td>
+                            @else
+                            <td class="text-success">Normal temperature</td>
+                            @endif
+                            <td>{{ $record['ecg'] }}</td>
+                            @if ($record['ecg'] < 60)
+                            <td class="text-danger">Low heart rate</td>
+                            @elseif ($record['ecg'] > 100)
+                            <td class="text-danger">High heart rate</td>
+                            @else
+                            <td class="text-success">Normal heart rate</td>
+                            @endif
+                        </tr>
+                        @endforeach
+                    </thead>
+                </table>   
+            </div>
+            <br>
+           
         </main>
 
-        <footer class="pt-5 my-5 text-muted border-top">
+        <footer class="pt-5 my-5 text-white border-top">
             Created by the CareWare team &middot; &copy; 2021
         </footer>
     </div>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

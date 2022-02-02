@@ -45,9 +45,9 @@
                 <div class="information">
                     <p><b>Full Name:</b> {{ $seniorLists->senior_name }}</p>
                     <p><b>Gender:</b>
-                        @if(($seniorLists->senior_gender) == 'm')
+                        @if(($seniorLists->senior_gender) == 'Male')
                         Male
-                        @else(($seniorLists->senior_gender) == 'f')
+                        @elseif(($seniorLists->senior_gender) == 'Female')
                         Female
                         @endif
                     </p>
@@ -58,7 +58,7 @@
                 </div> <br>
                 <ul>
                     <li style="position: relative; text-align:center">
-                        <a href="record/{{$seniorLists->id}}" type="button" class="profile-edit-btn" style="text-decoration: none;">See Data Record</a>
+                        <a href="/record/{{$seniorLists->id}}" type="button" class="profile-edit-btn" style="text-decoration: none;">See Data Record</a>
                     </li>
                 </ul>
             </div><br>

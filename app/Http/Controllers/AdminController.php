@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
-use App\Models\Senior;
+use App\Models\senior;
 use App\Models\Device;
 
 class AdminController extends Controller
@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function manageSeniorsView()
     {
         return view('admin.manageSeniors', [
-            'seniors' => Senior::all(),
+            'seniors' => senior::all(),
         ]);
     }
 
@@ -45,8 +45,8 @@ class AdminController extends Controller
     {
         return view('admin.assign', [
             'devices' => Device::doesntHave('senior')->get(),
-            'seniorsToDevice' => Senior::doesntHave('device')->get(),
-            'seniorsToUser' => Senior::doesntHave('user')->get(),
+            'seniorsToDevice' => senior::doesntHave('device')->get(),
+            'seniorsToUser' => senior::doesntHave('user')->get(),
             'users' => User::all(),
         ]);
     }
@@ -68,11 +68,56 @@ class AdminController extends Controller
         $senior_id = request()->input('selected_senior');
         $user_id = request()->input('selected_user');
 
-        $senior = Senior::find($senior_id);
+        $senior = senior::find($senior_id);
         $senior->user_id = $user_id;
         $senior->save();
 
         return redirect('adminHome');
+    }
+
+    public function editAssignment(Device $device)
+    {
+        return view('admin.editAssignment', [
+            'seniorsToDevice' => senior::doesntHave('device')->get(),
+            'users' => User::all(),
+            'selectedDevice' => $device,
+        ]);
+    }
+
+    public function updateDeviceAssign(Device $device)
+    {
+        $newsenior = request()->input('new_senior');
+
+        $d = Device::find($device->id);
+        $d->senior_id = $newsenior;
+        $d->save();
+
+        if($d->senior_id != NULL)
+        {
+            return back();
+        }
+        else
+        {
+            return redirect('adminHome');
+        }
+    }
+
+    public function updateSeniorAssign(senior $senior)
+    {
+        $newcaretaker = request()->input('new_caretaker');
+        
+        $s = senior::find($senior->id);
+        $s->user_id = $newcaretaker;
+        $s->save();
+
+        if($s->user_id != NULL)
+        {
+            return back();
+        }
+        else
+        {
+            return redirect('adminHome');
+        }
     }
 
     public function create()

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Senior;
 use App\Models\Temperature;
+=======
+>>>>>>> main
 
 class RegisterController extends Controller
 {

@@ -77,8 +77,8 @@
                 <div class="form-group">
                     <label for="gender" class="col-sm-3 control-label">Gender </label>
                     <select id="gender" class="form-control" name="gender">
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
 
