@@ -78,8 +78,11 @@
                 <a href="">Forgot Password?</a>
             </label>
             </div>
+            
             <p class="mt-5 mb-3 text-muted">&copy; CareWear 2021</p>
-
+            <label>
+                <a href="adminLogin">Admin login</a>
+            </label>
             <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
             (function () {
