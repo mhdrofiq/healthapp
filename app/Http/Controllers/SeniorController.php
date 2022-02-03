@@ -26,9 +26,9 @@ class SeniorController extends Controller
     
             //ddd($records);
     
-            $statusflag;
-            $tempflag;
-            $heartflag;
+            $statusflag = true;
+            $tempflag = true;
+            $heartflag = true;
     
             foreach($records as $record)
             {
@@ -42,6 +42,11 @@ class SeniorController extends Controller
                     $statusflag = false;
                     $tempflag = false;
                 }
+                else
+                {
+                    $tempflag = true;
+                }
+                
     
                 if($record['ecg'] < 60)
                 {
@@ -52,6 +57,10 @@ class SeniorController extends Controller
                 {
                     $statusflag = false;
                     $heartflag = false;
+                }
+                else
+                {
+                    $heartflag = true;
                 }
             }
     
