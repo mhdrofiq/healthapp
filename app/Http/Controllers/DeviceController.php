@@ -70,6 +70,7 @@ class DeviceController extends Controller
             //ddd($records);
             
             $record = array_values($records)[0];
+            
             if(($record['temperature'] >= 39.0 || $record['temperature'] < 35) ||
                 ($record['ecg'] > 100 || $record['ecg'] < 60))
             {
